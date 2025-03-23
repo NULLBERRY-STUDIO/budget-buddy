@@ -1,0 +1,449 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode - Morning Garden */
+    --background: 43 100% 96%;
+    --foreground: 20 14% 24%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 24%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 24%;
+    --primary: 27 96% 61%;
+    --primary-foreground: 60 9% 98%;
+    --secondary: 60 55% 94%;
+    --secondary-foreground: 24 9% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 24 9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9% 98%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 27 96% 61%;
+    --radius: 0.75rem;
+    
+    /* Secret Garden Colors - Light Mode */
+    --berlin-yellow: 43 96% 56%;
+    --berlin-amber: 38 92% 50%;
+    --berlin-orange: 27 96% 61%;
+    --berlin-red: 0 91% 71%;
+    --berlin-blue: 199 64% 73%;
+    --berlin-darkBlue: 201 100% 36%;
+    --berlin-gray: 210 20% 98%;
+    --berlin-warmLight: 43 100% 96%;
+    
+    /* Garden Colors */
+    --garden-cream: 39 100% 97%;
+    --garden-latte: 27 67% 82%;
+    --garden-mocha: 25 63% 42%;
+    --garden-espresso: 22 28% 21%;
+    --garden-mint: 164 42% 87%;
+    --garden-rose: 347 77% 50%;
+    --garden-cinnamon: 25 49% 47%;
+    --garden-caramel: 30 77% 80%;
+    --garden-leaf: 142 72% 29%;
+    --garden-sky: 204 71% 53%;
+    --garden-lavender: 260 60% 65%;
+    --garden-honey: 43 87% 84%;
+  }
+
+  .dark {
+    /* Dark mode - Evening Garden */
+    --background: 20 14% 8%;
+    --foreground: 60 9% 98%;
+    --card: 20 14% 13%;
+    --card-foreground: 60 9% 98%;
+    --popover: 20 14% 13%;
+    --popover-foreground: 60 9% 98%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 12 6% 15%;
+    --secondary: 12 6% 15%;
+    --secondary-foreground: 60 9% 98%;
+    --muted: 12 6% 15%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6% 15%;
+    --accent-foreground: 60 9% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9% 98%;
+    --border: 12 6% 24%;
+    --input: 12 6% 24%;
+    --ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f5a623' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Support for RTL languages */
+[dir="rtl"] .animate-slide-down {
+  animation-name: rtl-slide-down;
+}
+
+[dir="rtl"] .animate-slide-up {
+  animation-name: rtl-slide-up;
+}
+
+@keyframes rtl-slide-down {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rtl-slide-up {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Berlin Theme Styles */
+.berlin-card {
+  @apply rounded-xl border bg-card text-card-foreground shadow-sm;
+}
+
+.berlin-heading {
+  @apply text-2xl font-semibold tracking-tight font-serif;
+}
+
+.berlin-subheading {
+  @apply text-xl font-semibold tracking-tight font-serif;
+}
+
+.berlin-label {
+  @apply font-medium text-foreground;
+}
+
+/* Secret Garden Café Theme Styles */
+.cafe-header {
+  @apply bg-gradient-to-r from-berlin-amber to-berlin-orange text-white;
+}
+
+.cafe-card {
+  @apply bg-white bg-opacity-80 backdrop-blur-sm border border-berlin-amber/20 rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+}
+
+.warm-gradient {
+  @apply bg-gradient-to-tr from-berlin-warmLight to-white dark:from-gray-900 dark:to-gray-800;
+}
+
+.glass-card {
+  @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-berlin-amber/20;
+}
+
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation classes */
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.6s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Secret Garden specific animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Flower bloom animation */
+.animate-bloom {
+  animation: bloom 5s ease-in-out infinite;
+}
+
+@keyframes bloom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Page turn animation for transitions */
+.animate-page-turn {
+  animation: page-turn 0.8s ease-out;
+  transform-origin: left center;
+}
+
+@keyframes page-turn {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+/* Dappled light effect */
+.dappled-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.dappled-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 40%),
+                    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2) 0%, transparent 30%),
+                    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.2) 0%, transparent 30%);
+  animation: dappled-shift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes dappled-shift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 10% 20%, -10% 10%, 5% -5%;
+  }
+}
+
+/* Tree and foliage effect */
+.tree-canopy {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Cpath fill='%234CAF50' fill-opacity='0.1' d='M0 0h400v200H0z'/%3E%3C/svg%3E");
+  opacity: 0.15;
+}
+
+/* Bicycle at entrance effect */
+.bicycle-decoration {
+  @apply absolute bottom-4 right-4 text-berlin-darkBlue/70 dark:text-berlin-amber/70;
+  animation: bicycle-sway 10s ease-in-out infinite;
+}
+
+@keyframes bicycle-sway {
+  0%, 100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+/* Floral divider styling */
+.floral-divider {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.3), transparent);
+}
+
+.floral-divider::before,
+.floral-divider::after {
+  content: '✿';
+  position: absolute;
+  top: -10px;
+  color: rgba(245, 166, 35, 0.7);
+  font-size: 16px;
+}
+
+.floral-divider::before {
+  left: calc(50% - 30px);
+}
+
+.floral-divider::after {
+  right: calc(50% - 30px);
+}
+
+/* Card styling for café menu items */
+.menu-card {
+  @apply relative rounded-xl bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border border-berlin-amber/20 
+         p-5 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden;
+}
+
+.menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 L21 21 L19 21 Z' fill='%23f5a623' fill-opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Garden button styles */
+.garden-button {
+  @apply relative overflow-hidden rounded-full bg-gradient-to-r from-berlin-amber to-berlin-orange 
+         text-white font-medium py-2 px-6 shadow-md hover:shadow-lg transition-all duration-300
+         hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-berlin-amber;
+}
+
+.garden-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.garden-button:hover::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Additional RTL specific styles */
+[dir="rtl"] .mr-1 {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .ml-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Fix Leaflet map controls for RTL */
+[dir="rtl"] .leaflet-control-container .leaflet-left {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .leaflet-control-container .leaflet-right {
+  right: auto;
+  left: 0;
+}

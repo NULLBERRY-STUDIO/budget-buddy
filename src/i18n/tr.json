@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Bütçe Yardımcısı - Berlin",
+    "subtitle": "Gelirinize ve giderlerinize göre Berlin'de ne kadar kira ödeyebileceğinizi öğrenin."
+  },
+  "header": {
+    "about": "Hakkında",
+    "faq": "Sık Sorulan Sorular"
+  },
+  "calculator": {
+    "title": "Berlin Kira Hesaplayıcısı",
+    "description": "Gelirinize ve giderlerinize göre ne kadar kira ödeyebileceğinizi hesaplayın",
+    "income": "Aylık Net Gelir (vergilerden sonra)",
+    "budget": {
+      "single": "Tek Kişi Bütçesi",
+      "family": "Aile Bütçesi"
+    },
+    "rentPercentage": "Kira Yüzdesi",
+    "recommended": "%30 önerilir",
+    "apartmentSize": "Daire Büyüklüğü",
+    "rooms": {
+      "one": "1 Oda",
+      "two": "2 Oda",
+      "three": "3 Oda",
+      "fourPlus": "4+ Oda"
+    },
+    "expenses": {
+      "required": "Zorunlu Giderler",
+      "additional": "Ek Giderler"
+    },
+    "buttons": {
+      "calculate": "Hesapla",
+      "reset": "Sıfırla"
+    },
+    "results": {
+      "affordableRent": "Ödeyebileceğiniz Aylık Kira",
+      "basedOn": "€{{income}} gelirinize ve %{{percentage}} kira kuralına göre"
+    }
+  },
+  "neighborhoods": {
+    "title": "Karşılanabilir Semtler",
+    "updated": "Güncellendi",
+    "noMatch": "Bütçenize uygun semt bulunamadı",
+    "affordable": "Berlin semtlerinin %{{percentage}}'si {{roomType}} daireler için karşılanabilir",
+    "zone": "Bölge",
+    "utilities": "Faturalar",
+    "viewMode": {
+      "table": "Tablo",
+      "grid": "Izgara"
+    },
+    "tableHeaders": {
+      "neighborhood": "Semt",
+      "zone": "Bölge",
+      "rent": "Kira",
+      "utilities": "Faturalar",
+      "description": "Açıklama"
+    },
+    "noResults": {
+      "title": "Karşılanabilir semt bulunamadı",
+      "description": "Karşılanabilir seçenekler bulmak için bütçenizi artırmayı veya daire gereksinimlerinizi değiştirmeyi deneyin."
+    }
+  },
+  "expenses": {
+    "breakdown": "Aylık Bütçe Dökümü",
+    "income": "Gelir",
+    "totalExpenses": "Toplam Giderler",
+    "sufficient": "Geliriniz tüm giderleri karşılıyor ve €{{amount}} artıyor.",
+    "insufficient": "Uyarı: Giderleriniz gelirinizi €{{amount}} aşıyor.",
+    "budgetUsage": "Bütçe Kullanımı",
+    "remainingBudget": "Kalan Bütçe",
+    "doingGreat": "Harika gidiyorsunuz! Gelirinizin %{{percent}}'si kaldı.",
+    "categories": {
+      "groceries": "Market Alışverişi",
+      "transportation": "Ulaşım",
+      "utilities": "Faturalar",
+      "phone": "Telefon ve İnternet",
+      "insurance": "Sigorta",
+      "entertainment": "Eğlence",
+      "clothing": "Giyim",
+      "healthcare": "Sağlık",
+      "savings": "Tasarruf"
+    }
+  },
+  "footer": {
+    "copyright": "Tüm veriler yalnızca bilgi amaçlıdır.",
+    "madeIn": "Berlin'de",
+    "berlin": "sevgiyle yapıldı",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları",
+    "importantNotice": "Önemli Bildirim",
+    "importantNoticeText": "Bu araç, mevcut piyasa verilerine dayalı tahminler sunar. Gerçek kira fiyatları değişiklik gösterebilir. Finansal kararlar vermeden önce her zaman bilgileri doğrulayın.",
+    "dataBasedOn": "Veriler şu tarihteki Berlin kira piyasasına dayanmaktadır",
+    "copyrightText": "Tüm hakları saklıdır",
+    "email": "E-posta",
+    "studioName": "Nullberry",
+    "studioSuffix": "Studio",
+    "studioDescription": "Daha iyi yazılım ve araçlar geliştirmeye adanmış bağımsız bir yazılım stüdyosu — abonelik yok, reklam yok, gizli para kazanma hileleri yok."
+  },
+  "common": {
+    "dataAsOf": "Veriler şu tarihten itibaren"
+  }
+}

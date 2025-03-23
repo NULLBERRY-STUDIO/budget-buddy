@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Budget Buddy - Berlin",
+    "subtitle": "Find out how much rent you can afford in Berlin based on your income and expenses."
+  },
+  "header": {
+    "about": "About",
+    "faq": "FAQ"
+  },
+  "calculator": {
+    "title": "Berlin Rental Calculator",
+    "description": "Calculate how much rent you can afford based on your income and expenses",
+    "income": "Monthly Net Income (after taxes)",
+    "budget": {
+      "single": "Single Person Budget",
+      "family": "Family Budget"
+    },
+    "rentPercentage": "Rent Percentage",
+    "recommended": "30% is recommended",
+    "apartmentSize": "Apartment Size",
+    "rooms": {
+      "one": "1 Room",
+      "two": "2 Rooms",
+      "three": "3 Rooms",
+      "fourPlus": "4+ Rooms"
+    },
+    "expenses": {
+      "required": "Required Expenses",
+      "additional": "Additional Expenses"
+    },
+    "buttons": {
+      "calculate": "Calculate",
+      "reset": "Reset"
+    },
+    "results": {
+      "affordableRent": "Your Affordable Monthly Rent",
+      "basedOn": "Based on your income of €{{income}} and {{percentage}}% rent rule"
+    }
+  },
+  "neighborhoods": {
+    "title": "Affordable Neighborhoods",
+    "updated": "Updated",
+    "noMatch": "No neighborhoods match your budget",
+    "affordable": "{{percentage}}% of Berlin neighborhoods are affordable for {{roomType}} apartments",
+    "zone": "Zone",
+    "utilities": "Utilities",
+    "viewMode": {
+      "table": "Table",
+      "grid": "Grid"
+    },
+    "tableHeaders": {
+      "neighborhood": "Neighborhood",
+      "zone": "Zone",
+      "rent": "Rent",
+      "utilities": "Utilities",
+      "description": "Description"
+    },
+    "noResults": {
+      "title": "No affordable neighborhoods found",
+      "description": "Try increasing your budget or changing your apartment requirements to find affordable options."
+    }
+  },
+  "expenses": {
+    "breakdown": "Monthly Budget Breakdown",
+    "income": "Income",
+    "totalExpenses": "Total Expenses",
+    "sufficient": "Your income covers all expenses with €{{amount}} remaining.",
+    "insufficient": "Warning: Your expenses exceed your income by €{{amount}}.",
+    "budgetUsage": "Budget Usage",
+    "remainingBudget": "Remaining Budget",
+    "doingGreat": "You're doing great! You have {{percent}}% of your income left.",
+    "categories": {
+      "groceries": "Groceries",
+      "transportation": "Transportation",
+      "utilities": "Utilities",
+      "phone": "Phone & Internet",
+      "insurance": "Insurance",
+      "entertainment": "Entertainment",
+      "clothing": "Clothing",
+      "healthcare": "Healthcare",
+      "savings": "Savings"
+    }
+  },
+  "footer": {
+    "copyright": "All data is for informational purposes only.",
+    "madeIn": "Made with love",
+    "berlin": "in Berlin",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "importantNotice": "Important Notice",
+    "importantNoticeText": "This tool provides estimates based on current market data. Actual rental prices may vary. Always verify information before making financial decisions.",
+    "dataBasedOn": "Data based on Berlin rental market as of",
+    "copyrightText": "All rights reserved",
+    "email": "Email",
+    "studioName": "Nullberry",
+    "studioSuffix": "Studio",
+    "studioDescription": "An indie software studio dedicated to crafting better software & tools—no subscriptions, no ads, no hidden monetization tricks."
+  },
+  "common": {
+    "dataAsOf": "Data as of"
+  }
+}

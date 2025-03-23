@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Budget Buddy - Berlin",
+    "subtitle": "Découvrez combien de loyer vous pouvez vous permettre à Berlin en fonction de vos revenus et dépenses."
+  },
+  "header": {
+    "about": "À propos",
+    "faq": "FAQ"
+  },
+  "calculator": {
+    "title": "Calculateur de loyer à Berlin",
+    "description": "Calculez combien de loyer vous pouvez vous permettre en fonction de vos revenus et dépenses",
+    "income": "Revenu mensuel net (après impôts)",
+    "budget": {
+      "single": "Budget individuel",
+      "family": "Budget familial"
+    },
+    "rentPercentage": "Pourcentage du loyer",
+    "recommended": "30% est recommandé",
+    "apartmentSize": "Taille de l'appartement",
+    "rooms": {
+      "one": "1 Pièce",
+      "two": "2 Pièces",
+      "three": "3 Pièces",
+      "fourPlus": "4+ Pièces"
+    },
+    "expenses": {
+      "required": "Dépenses nécessaires",
+      "additional": "Dépenses supplémentaires"
+    },
+    "buttons": {
+      "calculate": "Calculer",
+      "reset": "Réinitialiser"
+    },
+    "results": {
+      "affordableRent": "Votre loyer mensuel abordable",
+      "basedOn": "Basé sur votre revenu de €{{income}} et la règle de {{percentage}}% pour le loyer"
+    }
+  },
+  "neighborhoods": {
+    "title": "Quartiers abordables",
+    "updated": "Mis à jour",
+    "noMatch": "Aucun quartier ne correspond à votre budget",
+    "affordable": "{{percentage}}% des quartiers de Berlin sont abordables pour les appartements de {{roomType}}",
+    "zone": "Zone",
+    "utilities": "Charges",
+    "viewMode": {
+      "table": "Tableau",
+      "grid": "Grille"
+    },
+    "tableHeaders": {
+      "neighborhood": "Quartier",
+      "zone": "Zone",
+      "rent": "Loyer",
+      "utilities": "Charges",
+      "description": "Description"
+    },
+    "noResults": {
+      "title": "Aucun quartier abordable trouvé",
+      "description": "Essayez d'augmenter votre budget ou de modifier vos exigences concernant l'appartement pour trouver des options abordables."
+    }
+  },
+  "expenses": {
+    "breakdown": "Répartition du budget mensuel",
+    "income": "Revenu",
+    "totalExpenses": "Dépenses totales",
+    "sufficient": "Votre revenu couvre toutes les dépenses avec €{{amount}} restants.",
+    "insufficient": "Attention: Vos dépenses dépassent votre revenu de €{{amount}}.",
+    "budgetUsage": "Utilisation du budget",
+    "remainingBudget": "Budget restant",
+    "doingGreat": "Vous vous en sortez très bien! Il vous reste {{percent}}% de votre revenu.",
+    "categories": {
+      "groceries": "Courses",
+      "transportation": "Transport",
+      "utilities": "Services publics",
+      "phone": "Téléphone & Internet",
+      "insurance": "Assurance",
+      "entertainment": "Divertissement",
+      "clothing": "Vêtements",
+      "healthcare": "Santé",
+      "savings": "Épargne"
+    }
+  },
+  "footer": {
+    "copyright": "Toutes les données sont fournies à titre informatif uniquement.",
+    "madeIn": "Fait avec amour",
+    "berlin": "à Berlin",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "importantNotice": "Avis important",
+    "importantNoticeText": "Cet outil fournit des estimations basées sur les données actuelles du marché. Les prix réels de location peuvent varier. Vérifiez toujours les informations avant de prendre des décisions financières.",
+    "dataBasedOn": "Données basées sur le marché locatif de Berlin en date du",
+    "copyrightText": "Tous droits réservés",
+    "email": "Email",
+    "studioName": "Nullberry",
+    "studioSuffix": "Studio",
+    "studioDescription": "Un studio de logiciels indépendant dédié à la création de meilleurs logiciels et outils — pas d'abonnements, pas de publicités, pas de techniques de monétisation cachées."
+  },
+  "common": {
+    "dataAsOf": "Données en date du"
+  }
+}

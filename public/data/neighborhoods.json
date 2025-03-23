@@ -1,0 +1,182 @@
+[
+  {
+    "id": "mitte",
+    "name": "Mitte",
+    "averageRent": {
+      "oneRoom": 1200,
+      "twoRoom": 2000,
+      "threeRoom": 2600,
+      "fourPlusRoom": 3400
+    },
+    "averageUtilitiesPerSqm": 4.8,
+    "transportZone": "A",
+    "groceryCostFactor": 1.3,
+    "description": "Berlin's central district with historical sites and government buildings.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "friedrichshain",
+    "name": "Friedrichshain",
+    "averageRent": {
+      "oneRoom": 1000,
+      "twoRoom": 1500,
+      "threeRoom": 2100,
+      "fourPlusRoom": 2800
+    },
+    "averageUtilitiesPerSqm": 4.5,
+    "transportZone": "A",
+    "groceryCostFactor": 1.2,
+    "description": "Vibrant area known for its nightlife, art scene, and the East Side Gallery.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "kreuzberg",
+    "name": "Kreuzberg",
+    "averageRent": {
+      "oneRoom": 1000,
+      "twoRoom": 1500,
+      "threeRoom": 2100,
+      "fourPlusRoom": 2900
+    },
+    "averageUtilitiesPerSqm": 4.6,
+    "transportZone": "A",
+    "groceryCostFactor": 1.2,
+    "description": "Diverse and multicultural area with a strong alternative scene.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "neukoelln",
+    "name": "Neukölln",
+    "averageRent": {
+      "oneRoom": 700,
+      "twoRoom": 1000,
+      "threeRoom": 1400,
+      "fourPlusRoom": 1900
+    },
+    "averageUtilitiesPerSqm": 4.2,
+    "transportZone": "A",
+    "groceryCostFactor": 1.0,
+    "description": "Rapidly gentrifying area known for its cultural diversity and affordability.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "charlottenburg",
+    "name": "Charlottenburg",
+    "averageRent": {
+      "oneRoom": 1100,
+      "twoRoom": 1700,
+      "threeRoom": 2300,
+      "fourPlusRoom": 3100
+    },
+    "averageUtilitiesPerSqm": 4.7,
+    "transportZone": "A",
+    "groceryCostFactor": 1.4,
+    "description": "Upscale western district with elegant boulevards and the Charlottenburg Palace.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "prenzlauer-berg",
+    "name": "Prenzlauer Berg",
+    "averageRent": {
+      "oneRoom": 1000,
+      "twoRoom": 1500,
+      "threeRoom": 2100,
+      "fourPlusRoom": 2800
+    },
+    "averageUtilitiesPerSqm": 4.5,
+    "transportZone": "A",
+    "groceryCostFactor": 1.3,
+    "description": "Family-friendly area with renovated pre-war buildings and many cafes.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "schoeneberg",
+    "name": "Schöneberg",
+    "averageRent": {
+      "oneRoom": 950,
+      "twoRoom": 1450,
+      "threeRoom": 1950,
+      "fourPlusRoom": 2600
+    },
+    "averageUtilitiesPerSqm": 4.4,
+    "transportZone": "A",
+    "groceryCostFactor": 1.2,
+    "description": "Diverse neighborhood known for its LGBTQ+ scene and cultural history.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "wedding",
+    "name": "Wedding",
+    "averageRent": {
+      "oneRoom": 850,
+      "twoRoom": 1250,
+      "threeRoom": 1700,
+      "fourPlusRoom": 2300
+    },
+    "averageUtilitiesPerSqm": 4.1,
+    "transportZone": "A",
+    "groceryCostFactor": 1.0,
+    "description": "Up-and-coming district with more affordable rents and a working-class character.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "lichtenberg",
+    "name": "Lichtenberg",
+    "averageRent": {
+      "oneRoom": 800,
+      "twoRoom": 1200,
+      "threeRoom": 1600,
+      "fourPlusRoom": 2200
+    },
+    "averageUtilitiesPerSqm": 4.0,
+    "transportZone": "B",
+    "groceryCostFactor": 0.9,
+    "description": "Eastern district with Soviet-era architecture and increasing development.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "steglitz",
+    "name": "Steglitz",
+    "averageRent": {
+      "oneRoom": 900,
+      "twoRoom": 1350,
+      "threeRoom": 1800,
+      "fourPlusRoom": 2400
+    },
+    "averageUtilitiesPerSqm": 4.3,
+    "transportZone": "B",
+    "groceryCostFactor": 1.1,
+    "description": "Residential area in southwestern Berlin with good shopping options.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "spandau",
+    "name": "Spandau",
+    "averageRent": {
+      "oneRoom": 780,
+      "twoRoom": 1150,
+      "threeRoom": 1550,
+      "fourPlusRoom": 2100
+    },
+    "averageUtilitiesPerSqm": 3.9,
+    "transportZone": "B",
+    "groceryCostFactor": 1.0,
+    "description": "Historic district in western Berlin with medieval architecture.",
+    "lastUpdated": "2025-03-23"
+  },
+  {
+    "id": "reinickendorf",
+    "name": "Reinickendorf",
+    "averageRent": {
+      "oneRoom": 750,
+      "twoRoom": 1100,
+      "threeRoom": 1500,
+      "fourPlusRoom": 2000
+    },
+    "averageUtilitiesPerSqm": 3.8,
+    "transportZone": "B",
+    "groceryCostFactor": 1.0,
+    "description": "Northern district with natural areas including Lake Tegel.",
+    "lastUpdated": "2025-03-23"
+  }
+]

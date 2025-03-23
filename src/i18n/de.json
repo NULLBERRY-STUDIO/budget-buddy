@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Budget Buddy - Berlin",
+    "subtitle": "Finde heraus, wie viel Miete du dir in Berlin leisten kannst, basierend auf deinem Einkommen und deinen Ausgaben."
+  },
+  "header": {
+    "about": "Über uns",
+    "faq": "Häufige Fragen"
+  },
+  "calculator": {
+    "title": "Berliner Mietrechner",
+    "description": "Berechne, wie viel Miete du dir basierend auf deinem Einkommen und deinen Ausgaben leisten kannst",
+    "income": "Monatliches Nettoeinkommen (nach Steuern)",
+    "budget": {
+      "single": "Einzelpersonenbudget",
+      "family": "Familienbudget"
+    },
+    "rentPercentage": "Mietanteil",
+    "recommended": "30% werden empfohlen",
+    "apartmentSize": "Wohnungsgröße",
+    "rooms": {
+      "one": "1 Zimmer",
+      "two": "2 Zimmer",
+      "three": "3 Zimmer",
+      "fourPlus": "4+ Zimmer"
+    },
+    "expenses": {
+      "required": "Notwendige Ausgaben",
+      "additional": "Zusätzliche Ausgaben"
+    },
+    "buttons": {
+      "calculate": "Berechnen",
+      "reset": "Zurücksetzen"
+    },
+    "results": {
+      "affordableRent": "Deine machbare monatliche Miete",
+      "basedOn": "Basierend auf deinem Einkommen von €{{income}} und der {{percentage}}%-Mietregel"
+    }
+  },
+  "neighborhoods": {
+    "title": "Bezahlbare Kieze",
+    "updated": "Aktualisiert",
+    "noMatch": "Keine Kieze passen zu deinem Budget",
+    "affordable": "{{percentage}}% der Berliner Kieze sind erschwinglich für {{roomType}}-Wohnungen",
+    "zone": "Zone",
+    "utilities": "Nebenkosten",
+    "viewMode": {
+      "table": "Tabelle",
+      "grid": "Kacheln"
+    },
+    "tableHeaders": {
+      "neighborhood": "Kiez",
+      "zone": "Zone",
+      "rent": "Miete",
+      "utilities": "Nebenkosten",
+      "description": "Beschreibung"
+    },
+    "noResults": {
+      "title": "Keine bezahlbaren Kieze gefunden",
+      "description": "Versuche, dein Budget zu erhöhen oder deine Wohnungsanforderungen zu ändern, um bezahlbare Optionen zu finden."
+    }
+  },
+  "expenses": {
+    "breakdown": "Monatliche Budgetaufschlüsselung",
+    "income": "Einkommen",
+    "totalExpenses": "Gesamtausgaben",
+    "sufficient": "Dein Einkommen deckt alle Ausgaben mit €{{amount}} Restbetrag.",
+    "insufficient": "Achtung: Deine Ausgaben übersteigen dein Einkommen um €{{amount}}.",
+    "budgetUsage": "Budgetnutzung",
+    "remainingBudget": "Verbleibendes Budget",
+    "doingGreat": "Du machst das großartig! Du hast {{percent}}% deines Einkommens übrig.",
+    "categories": {
+      "groceries": "Lebensmittel",
+      "transportation": "Transport",
+      "utilities": "Nebenkosten",
+      "phone": "Telefon & Internet",
+      "insurance": "Versicherung",
+      "entertainment": "Unterhaltung",
+      "clothing": "Kleidung",
+      "healthcare": "Gesundheitspflege",
+      "savings": "Ersparnisse"
+    }
+  },
+  "footer": {
+    "copyright": "Alle Daten dienen nur zu Informationszwecken.",
+    "madeIn": "Mit Liebe gemacht",
+    "berlin": "in Berlin",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "importantNotice": "Wichtiger Hinweis",
+    "importantNoticeText": "Dieses Tool bietet Schätzungen basierend auf aktuellen Marktdaten. Tatsächliche Mietpreise können variieren. Überprüfen Sie immer die Informationen, bevor Sie finanzielle Entscheidungen treffen.",
+    "dataBasedOn": "Daten basierend auf dem Berliner Mietmarkt vom",
+    "copyrightText": "Alle Rechte vorbehalten",
+    "email": "E-Mail",
+    "studioName": "Nullberry",
+    "studioSuffix": "Studio",
+    "studioDescription": "Ein unabhängiges Softwarestudio, das sich der Entwicklung besserer Software und Tools widmet — keine Abonnements, keine Werbung, keine versteckten Monetarisierungstricks."
+  },
+  "common": {
+    "dataAsOf": "Daten vom"
+  }
+}

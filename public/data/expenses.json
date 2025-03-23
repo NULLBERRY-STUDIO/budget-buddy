@@ -1,0 +1,84 @@
+
+[
+  {
+    "id": "groceries",
+    "name": "Groceries",
+    "icon": "shopping-basket",
+    "defaultAmountSingle": 350,
+    "defaultAmountFamily": 800,
+    "description": "Monthly food and household supplies",
+    "isRequired": true
+  },
+  {
+    "id": "transportation",
+    "name": "Transportation",
+    "icon": "train",
+    "defaultAmountSingle": 86,
+    "defaultAmountFamily": 172,
+    "description": "Public transportation within Berlin",
+    "isRequired": true
+  },
+  {
+    "id": "utilities",
+    "name": "Utilities",
+    "icon": "zap",
+    "defaultAmountSingle": 200,
+    "defaultAmountFamily": 300,
+    "description": "Electricity, heating, water, and internet",
+    "isRequired": true
+  },
+  {
+    "id": "phone",
+    "name": "Phone & Internet",
+    "icon": "smartphone",
+    "defaultAmountSingle": 50,
+    "defaultAmountFamily": 100,
+    "description": "Mobile phone and home internet",
+    "isRequired": true
+  },
+  {
+    "id": "insurance",
+    "name": "Insurance",
+    "icon": "shield",
+    "defaultAmountSingle": 150,
+    "defaultAmountFamily": 280,
+    "description": "Health, liability, and other insurances",
+    "isRequired": true
+  },
+  {
+    "id": "entertainment",
+    "name": "Entertainment",
+    "icon": "film",
+    "defaultAmountSingle": 120,
+    "defaultAmountFamily": 220,
+    "description": "Streaming services, concerts, eating out",
+    "isRequired": false
+  },
+  {
+    "id": "clothing",
+    "name": "Clothing",
+    "icon": "shirt",
+    "defaultAmountSingle": 80,
+    "defaultAmountFamily": 200,
+    "description": "Clothing and shoes",
+    "isRequired": false
+  },
+  {
+    "id": "healthcare",
+    "name": "Healthcare",
+    "icon": "heart-pulse",
+    "defaultAmountSingle": 50,
+    "defaultAmountFamily": 100,
+    "description": "Out-of-pocket medical expenses",
+    "isRequired": false
+  },
+  {
+    "id": "savings",
+    "name": "Savings",
+    "icon": "piggy-bank",
+    "defaultAmountSingle": 300,
+    "defaultAmountFamily": 450,
+    "description": "Monthly savings amount",
+    "isRequired": false
+  }
+]

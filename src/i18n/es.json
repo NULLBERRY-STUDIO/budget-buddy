@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Budget Buddy - Berlín",
+    "subtitle": "Descubre cuánto alquiler puedes permitirte en Berlín según tus ingresos y gastos."
+  },
+  "header": {
+    "about": "Acerca de",
+    "faq": "Preguntas frecuentes"
+  },
+  "calculator": {
+    "title": "Calculadora de Alquiler de Berlín",
+    "description": "Calcula cuánto alquiler puedes permitirte según tus ingresos y gastos",
+    "income": "Ingresos mensuales netos (después de impuestos)",
+    "budget": {
+      "single": "Presupuesto individual",
+      "family": "Presupuesto familiar"
+    },
+    "rentPercentage": "Porcentaje de alquiler",
+    "recommended": "Se recomienda un 30%",
+    "apartmentSize": "Tamaño del apartamento",
+    "rooms": {
+      "one": "1 Habitación",
+      "two": "2 Habitaciones",
+      "three": "3 Habitaciones",
+      "fourPlus": "4+ Habitaciones"
+    },
+    "expenses": {
+      "required": "Gastos necesarios",
+      "additional": "Gastos adicionales"
+    },
+    "buttons": {
+      "calculate": "Calcular",
+      "reset": "Reiniciar"
+    },
+    "results": {
+      "affordableRent": "Tu alquiler mensual asequible",
+      "basedOn": "Basado en tus ingresos de €{{income}} y la regla del {{percentage}}% de alquiler"
+    }
+  },
+  "neighborhoods": {
+    "title": "Barrios asequibles",
+    "updated": "Actualizado",
+    "noMatch": "Ningún barrio coincide con tu presupuesto",
+    "affordable": "El {{percentage}}% de los barrios de Berlín son asequibles para apartamentos de {{roomType}}",
+    "zone": "Zona",
+    "utilities": "Servicios",
+    "viewMode": {
+      "table": "Tabla",
+      "grid": "Cuadrícula"
+    },
+    "tableHeaders": {
+      "neighborhood": "Barrio",
+      "zone": "Zona",
+      "rent": "Alquiler",
+      "utilities": "Servicios",
+      "description": "Descripción"
+    },
+    "noResults": {
+      "title": "No se encontraron barrios asequibles",
+      "description": "Intenta aumentar tu presupuesto o cambiar tus requisitos de apartamento para encontrar opciones asequibles."
+    }
+  },
+  "expenses": {
+    "breakdown": "Desglose del presupuesto mensual",
+    "income": "Ingresos",
+    "totalExpenses": "Gastos totales",
+    "sufficient": "Tus ingresos cubren todos los gastos con €{{amount}} restantes.",
+    "insufficient": "Advertencia: Tus gastos superan tus ingresos en €{{amount}}.",
+    "budgetUsage": "Uso del presupuesto",
+    "remainingBudget": "Presupuesto restante",
+    "doingGreat": "¡Lo estás haciendo genial! Te queda el {{percent}}% de tus ingresos.",
+    "categories": {
+      "groceries": "Comestibles",
+      "transportation": "Transporte",
+      "utilities": "Servicios",
+      "phone": "Teléfono e Internet",
+      "insurance": "Seguro",
+      "entertainment": "Entretenimiento",
+      "clothing": "Ropa",
+      "healthcare": "Salud",
+      "savings": "Ahorros"
+    }
+  },
+  "footer": {
+    "copyright": "Todos los datos son solo para fines informativos.",
+    "madeIn": "Hecho con amor",
+    "berlin": "en Berlín",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de uso",
+    "importantNotice": "Aviso importante",
+    "importantNoticeText": "Esta herramienta proporciona estimaciones basadas en datos actuales del mercado. Los precios reales de alquiler pueden variar. Verifica siempre la información antes de tomar decisiones financieras.",
+    "dataBasedOn": "Datos basados en el mercado de alquiler de Berlín a partir de",
+    "copyrightText": "Todos los derechos reservados",
+    "email": "Correo electrónico",
+    "studioName": "Nullberry",
+    "studioSuffix": "Studio",
+    "studioDescription": "Un estudio de software independiente dedicado a crear mejor software y herramientas—sin suscripciones, sin anuncios, sin trucos de monetización ocultos."
+  },
+  "common": {
+    "dataAsOf": "Datos a partir de"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Budget Buddy - Berlin",
+    "subtitle": "Sprawdź, ile czynszu możesz sobie pozwolić w Berlinie na podstawie swoich dochodów i wydatków."
+  },
+  "header": {
+    "about": "O nas",
+    "faq": "FAQ"
+  },
+  "calculator": {
+    "title": "Kalkulator Wynajmu w Berlinie",
+    "description": "Oblicz, ile czynszu możesz sobie pozwolić na podstawie swoich dochodów i wydatków",
+    "income": "Miesięczny dochód netto (po podatkach)",
+    "budget": {
+      "single": "Budżet dla jednej osoby",
+      "family": "Budżet rodzinny"
+    },
+    "rentPercentage": "Procent czynszu",
+    "recommended": "Zalecane jest 30%",
+    "apartmentSize": "Wielkość mieszkania",
+    "rooms": {
+      "one": "1 Pokój",
+      "two": "2 Pokoje",
+      "three": "3 Pokoje",
+      "fourPlus": "4+ Pokoje"
+    },
+    "expenses": {
+      "required": "Niezbędne wydatki",
+      "additional": "Dodatkowe wydatki"
+    },
+    "buttons": {
+      "calculate": "Oblicz",
+      "reset": "Reset"
+    },
+    "results": {
+      "affordableRent": "Twój przystępny miesięczny czynsz",
+      "basedOn": "Na podstawie Twojego dochodu w wysokości €{{income}} i zasady {{percentage}}% czynszu"
+    }
+  },
+  "neighborhoods": {
+    "title": "Przystępne dzielnice",
+    "updated": "Zaktualizowano",
+    "noMatch": "Żadna dzielnica nie pasuje do Twojego budżetu",
+    "affordable": "{{percentage}}% dzielnic Berlina jest przystępnych dla mieszkań typu {{roomType}}",
+    "zone": "Strefa",
+    "utilities": "Media",
+    "viewMode": {
+      "table": "Tabela",
+      "grid": "Siatka"
+    },
+    "tableHeaders": {
+      "neighborhood": "Dzielnica",
+      "zone": "Strefa",
+      "rent": "Czynsz",
+      "utilities": "Media",
+      "description": "Opis"
+    },
+    "noResults": {
+      "title": "Nie znaleziono przystępnych dzielnic",
+      "description": "Spróbuj zwiększyć swój budżet lub zmienić wymagania dotyczące mieszkania, aby znaleźć przystępne opcje."
+    }
+  },
+  "expenses": {
+    "breakdown": "Miesięczny podział budżetu",
+    "income": "Dochód",
+    "totalExpenses": "Całkowite wydatki",
+    "sufficient": "Twój dochód pokrywa wszystkie wydatki z pozostałą kwotą €{{amount}}.",
+    "insufficient": "Uwaga: Twoje wydatki przekraczają Twój dochód o €{{amount}}.",
+    "budgetUsage": "Wykorzystanie budżetu",
+    "remainingBudget": "Pozostały budżet",
+    "doingGreat": "Świetnie sobie radzisz! Zostało Ci {{percent}}% Twojego dochodu.",
+    "categories": {
+      "groceries": "Artykuły spożywcze",
+      "transportation": "Transport",
+      "utilities": "Media",
+      "phone": "Telefon i Internet",
+      "insurance": "Ubezpieczenie",
+      "entertainment": "Rozrywka",
+      "clothing": "Odzież",
+      "healthcare": "Opieka zdrowotna",
+      "savings": "Oszczędności"
+    }
+  },
+  "footer": {
+    "copyright": "Wszystkie dane służą wyłącznie celom informacyjnym.",
+    "madeIn": "Stworzone z miłością",
+    "berlin": "w Berlinie",
+    "privacy": "Polityka prywatności",
+    "terms": "Warunki korzystania",
+    "importantNotice": "Ważna informacja",
+    "importantNoticeText": "To narzędzie dostarcza szacunki oparte na aktualnych danych rynkowych. Rzeczywiste ceny wynajmu mogą się różnić. Zawsze weryfikuj informacje przed podjęciem decyzji finansowych.",
+    "dataBasedOn": "Dane oparte na berlińskim rynku wynajmu z dnia",
+    "copyrightText": "Wszelkie prawa zastrzeżone",
+    "email": "Email",
+    "studioName": "Nullberry",
+    "studioSuffix": "Studio",
+    "studioDescription": "Niezależne studio programistyczne zajmujące się tworzeniem lepszego oprogramowania i narzędzi — bez subskrypcji, bez reklam, bez ukrytych sztuczek monetyzacyjnych."
+  },
+  "common": {
+    "dataAsOf": "Dane z dnia"
+  }
+}
