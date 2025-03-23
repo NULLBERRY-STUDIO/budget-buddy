@@ -1,0 +1,8 @@
+[pages]
+pages_build_output_dir = "dist"
+
+[build]
+command = "bun install && bun run build"
+
+[build.environment]
+NODE_VERSION = "20"
