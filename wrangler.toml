@@ -1,8 +1,11 @@
-[pages]
-pages_build_output_dir = "dist"
+name = "budgetbuddy-berlin"
+compatibility_date = "2025-03-24"
 
 [build]
 command = "bun install && bun run build"
 
 [build.environment]
 NODE_VERSION = "20"
+
+[assets]
+directory = "./dist"
