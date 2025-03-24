@@ -281,11 +281,11 @@ export function Calculator() {
                 
                 {/* Percentage visualization */}
                 <div className="relative h-16 bg-neutral-100 dark:bg-neutral-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-                  {/* Percentage zones - colors only without labels */}
+                  {/* Percentage zones with brighter gradients */}
                   <div className="absolute inset-0 flex">
-                    <div className="w-[30%] h-full bg-green-400/20 dark:bg-green-400/10"></div>
-                    <div className="w-[20%] h-full bg-amber-400/20 dark:bg-amber-400/10"></div>
-                    <div className="w-[50%] h-full bg-red-400/20 dark:bg-red-400/10"></div>
+                    <div className="w-[30%] h-full bg-gradient-to-r from-green-300/50 to-emerald-400/40 dark:from-green-400/60 dark:to-emerald-300/50"></div>
+                    <div className="w-[20%] h-full bg-gradient-to-r from-amber-300/50 to-yellow-400/40 dark:from-amber-400/60 dark:to-yellow-300/50"></div>
+                    <div className="w-[50%] h-full bg-gradient-to-r from-rose-300/50 to-red-400/40 dark:from-rose-400/60 dark:to-red-300/50"></div>
                   </div>
                   
                   {/* Percentage buttons */}

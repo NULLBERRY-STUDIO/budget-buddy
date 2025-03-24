@@ -9,13 +9,15 @@ export const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 py-4 glass-panel subtle-shadow">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 py-4 bg-neutral-100/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Building2 className="w-6 h-6 text-berlin-orange" />
-            <span className="text-lg font-medium">BudgetBuddy</span>
-            <span className="text-berlin-orange">Nullberry Studio</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center">
+              <Building2 className="w-6 h-6 text-berlin-orange" />
+              <span className="text-lg font-medium ml-2">BudgetBuddy</span>
+            </div>
+            <span className="text-berlin-orange text-sm hidden sm:inline">Nullberry Studio</span>
           </div>
 
           <div className="flex items-center space-x-2">
