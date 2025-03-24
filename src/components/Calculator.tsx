@@ -84,12 +84,11 @@ export function Calculator() {
     setExpenses(defaultExpenses);
   }, [isFamilyBudget, setExpenses]);
   
-  // Calculate affordable rent
-  const calculateAffordableRent = () => {
-    if (monthlyIncome <= 0) {
-      toast.error("Please enter a valid monthly income");
-      return;
-    }
+  // Calculate affordable rent whenever inputs change
+  useEffect(() => {
+    if (isLoading) return; // Skip calculation while loading initial data
+    
+    if (monthlyIncome <= 0) return;
     
     // Calculate affordable rent using the percentage rule
     const calculatedRent = monthlyIncome * (rentPercentage / 100);
@@ -103,14 +102,35 @@ export function Calculator() {
     
     setAffordableRent(trueAffordableRent > 0 ? trueAffordableRent : 0);
     setShowResults(true);
+  }, [monthlyIncome, rentPercentage, isFamilyBudget, expenses, isLoading]);
+  
+  const calculateAffordableRent = () => {
+    if (monthlyIncome <= 0) {
+      toast.error("Please enter a valid monthly income");
+      return;
+    }
     
-    // Show appropriate toast message
+    // Show appropriate toast message based on the current calculation
+    const calculatedRent = monthlyIncome * (rentPercentage / 100);
+    const requiredExpenses = calculateRequiredExpenses(isFamilyBudget, expenses);
+    const totalAvailable = monthlyIncome - requiredExpenses;
+    const trueAffordableRent = Math.min(calculatedRent, totalAvailable);
+    
     if (trueAffordableRent <= 0) {
       toast.error("Your income doesn't cover basic expenses, please check your budget");
     } else if (trueAffordableRent < calculatedRent * 0.7) {
       toast.warning("Your actual affordable rent is lower than expected due to other expenses");
     } else {
       toast.success("Calculation complete! Scroll down to see results");
+    }
+    
+    // Ensure results are visible
+    setShowResults(true);
+    
+    // Scroll to results section
+    const resultsElement = document.getElementById('results-section');
+    if (resultsElement) {
+      resultsElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
   
@@ -429,7 +449,7 @@ export function Calculator() {
       </Card>
       
       {showResults && (
-        <div className="mt-8 space-y-8 animate-slide-up">
+        <div id="results-section" className="mt-8 space-y-8 animate-slide-up">
           <div className="berlin-card text-center py-8 warm-gradient">
             <h2 className="berlin-subheading mb-2">{t('calculator.results.affordableRent')}</h2>
             <p className="text-5xl sm:text-6xl font-bold text-berlin-yellow bg-clip-text text-transparent bg-gradient-to-r from-berlin-yellow to-amber-500">
