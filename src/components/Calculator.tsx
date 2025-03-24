@@ -1,10 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ExpenseBreakdown } from "@/components/ExpenseBreakdown";
@@ -13,7 +11,7 @@ import { Neighborhood, fetchNeighborhoods } from "@/data/neighborhoods";
 import { calculateRequiredExpenses, fetchExpenseCategories, getExpenseCategories } from "@/data/expenses";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Calculator as CalculatorIcon, Users, User, Check, RefreshCcw, Euro, Calendar } from "lucide-react";
+import { Calculator as CalculatorIcon, Users, User, Check, RefreshCcw, Euro, Calendar, Home, AlertTriangle, CheckCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export function Calculator() {
@@ -69,7 +67,7 @@ export function Calculator() {
     };
     
     loadData();
-  }, []);
+  }, [isFamilyBudget, setIsLoading, setExpenses, setLastDataUpdate]);
   
   // Update the expenses state when family budget changes
   useEffect(() => {
@@ -84,7 +82,7 @@ export function Calculator() {
     }, {} as Record<string, number>);
     
     setExpenses(defaultExpenses);
-  }, [isFamilyBudget]);
+  }, [isFamilyBudget, setExpenses]);
   
   // Calculate affordable rent
   const calculateAffordableRent = () => {
@@ -232,21 +230,80 @@ export function Calculator() {
             </div>
             
             <div className="space-y-4 p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl border border-berlin-gray/20 shadow-md">
-              <div className="flex justify-between">
+              <div className="flex items-center gap-2 mb-3">
+                <Home className="h-5 w-5 text-berlin-yellow" />
                 <Label htmlFor="rentPercentage" className="berlin-label text-base">
-                  {t('calculator.rentPercentage')} ({rentPercentage}%)
+                  {t('calculator.rentPercentage')}
                 </Label>
-                <span className="text-sm text-muted-foreground">({t('calculator.recommended')})</span>
               </div>
-              <Slider
-                id="rentPercentage"
-                min={10}
-                max={50}
-                step={1}
-                value={[rentPercentage]}
-                onValueChange={(value) => setRentPercentage(value[0])}
-                className="py-6"
-              />
+              
+              {/* Rent percentage selector */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {t('calculator.currentSelection')}: <span className="font-bold">{rentPercentage}%</span>
+                  </span>
+                  <div className="flex items-center gap-1">
+                    {rentPercentage <= 30 ? (
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <AlertTriangle className="h-4 w-4 text-amber-500" />
+                    )}
+                    <span className={`text-sm font-medium ${
+                      rentPercentage <= 30 ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'
+                    }`}>
+                      {rentPercentage <= 30 
+                        ? t('calculator.recommendedValue') 
+                        : t('calculator.highValue')}
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Percentage visualization */}
+                <div className="relative h-16 bg-neutral-100 dark:bg-neutral-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+                  {/* Percentage zones - colors only without labels */}
+                  <div className="absolute inset-0 flex">
+                    <div className="w-[30%] h-full bg-green-400/20 dark:bg-green-400/10"></div>
+                    <div className="w-[20%] h-full bg-amber-400/20 dark:bg-amber-400/10"></div>
+                    <div className="w-[50%] h-full bg-red-400/20 dark:bg-red-400/10"></div>
+                  </div>
+                  
+                  {/* Percentage buttons */}
+                  <div className="absolute inset-0 flex">
+                    {[20, 25, 30, 35, 40, 45].map((percent) => (
+                      <button
+                        key={percent}
+                        onClick={() => setRentPercentage(percent)}
+                        className={`h-full flex-1 flex flex-col items-center justify-center relative transition-all ${
+                          rentPercentage === percent 
+                            ? 'bg-white dark:bg-neutral-800 shadow-md z-10 scale-105' 
+                            : 'hover:bg-white/50 dark:hover:bg-neutral-600/50'
+                        }`}
+                      >
+                        <span className={`text-lg font-bold ${
+                          rentPercentage === percent 
+                            ? percent <= 30 
+                              ? 'text-green-600 dark:text-green-400' 
+                              : 'text-amber-600 dark:text-amber-400'
+                            : 'text-gray-700 dark:text-gray-300'
+                        }`}>
+                          {percent}%
+                        </span>
+                        {rentPercentage === percent && (
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 rounded-t-full bg-berlin-yellow"></div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Explanation text */}
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {rentPercentage <= 30 
+                    ? t('calculator.rentPercentageHealthyTip') 
+                    : t('calculator.rentPercentageHighTip')}
+                </p>
+              </div>
             </div>
             
             <div className="space-y-4">

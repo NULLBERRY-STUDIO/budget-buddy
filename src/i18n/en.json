@@ -17,6 +17,11 @@
     },
     "rentPercentage": "Rent Percentage",
     "recommended": "30% is recommended",
+    "currentSelection": "Current Selection",
+    "recommendedValue": "Recommended",
+    "highValue": "Above Recommended",
+    "rentPercentageHealthyTip": "Financial experts recommend keeping rent at or below 30% of your income for better financial stability.",
+    "rentPercentageHighTip": "Your rent percentage is above the recommended 30%. Consider if this fits your financial situation.",
     "apartmentSize": "Apartment Size",
     "rooms": {
       "one": "1 Room",

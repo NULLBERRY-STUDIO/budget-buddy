@@ -292,11 +292,11 @@ export function ExpenseBreakdown({
                 </div>
                 
                 <div className="relative h-8 bg-neutral-200 dark:bg-neutral-700 rounded-md overflow-hidden">
-                  {/* Percentage zones */}
+                  {/* Zone colors without labels */}
                   <div className="absolute inset-0 flex">
-                    <div className="h-full bg-green-400/20 dark:bg-green-400/10" style={{ width: '30%' }}></div>
-                    <div className="h-full bg-amber-400/20 dark:bg-amber-400/10" style={{ width: '20%' }}></div>
-                    <div className="h-full bg-red-400/20 dark:bg-red-400/10" style={{ width: '50%' }}></div>
+                    <div className="w-[30%] h-full bg-green-400/20 dark:bg-green-400/10"></div>
+                    <div className="w-[20%] h-full bg-amber-400/20 dark:bg-amber-400/10"></div>
+                    <div className="w-[50%] h-full bg-red-400/20 dark:bg-red-400/10"></div>
                   </div>
                   
                   {/* Rent percentage indicator */}
@@ -313,19 +313,6 @@ export function ExpenseBreakdown({
                     <div className={`absolute -top-1 w-3 h-3 rounded-full ${
                       isRentPercentageHealthy ? 'bg-green-500' : 'bg-amber-500'
                     }`}></div>
-                  </div>
-                  
-                  {/* Zone labels */}
-                  <div className="absolute inset-0 flex items-center text-[10px] font-medium">
-                    <div className="w-[30%] text-center text-green-700 dark:text-green-300">
-                      {t('expenses.healthy')}
-                    </div>
-                    <div className="w-[20%] text-center text-amber-700 dark:text-amber-300">
-                      {t('expenses.moderate')}
-                    </div>
-                    <div className="w-[50%] text-center text-red-700 dark:text-red-300">
-                      {t('expenses.high')}
-                    </div>
                   </div>
                 </div>
                 
