@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getExpenseCategories } from '@/data/expenses';
-import { CakeSlice, Coffee, CreditCard, Euro, Leaf, ShoppingBag, Utensils, CheckCircle2, AlertCircle } from 'lucide-react';
+import { CakeSlice, Coffee, CreditCard, Euro, Leaf, ShoppingBag, Utensils, CheckCircle2, AlertCircle, Home } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Progress } from '@/components/ui/progress';
 
@@ -49,6 +49,10 @@ export function ExpenseBreakdown({
   const isAffordable = monthlyIncome >= totalExpenses;
   const remainingBudget = monthlyIncome - totalExpenses;
   const budgetRatio = Math.min(100, (totalExpenses / monthlyIncome) * 100);
+  
+  // Calculate rent percentage of income
+  const rentPercentage = (affordableRent / monthlyIncome) * 100;
+  const isRentPercentageHealthy = rentPercentage <= 30; // 30% rule of thumb
   
   // Get expense categories from our data module
   const expenseCategories = getExpenseCategories();
@@ -261,6 +265,78 @@ export function ExpenseBreakdown({
             className="h-3 bg-neutral-200 dark:bg-neutral-700" 
             indicatorClassName={isAffordable ? "bg-gradient-to-r from-green-400 to-green-500" : "bg-gradient-to-r from-red-400 to-red-500"}
           />
+        </div>
+        
+        {/* Rent percentage visualization */}
+        <div className="px-6 pt-6">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-gray-200 dark:border-gray-800 p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <Home className="h-5 w-5 text-berlin-orange" />
+              <h3 className="text-base font-medium text-gray-800 dark:text-gray-200">{t('neighborhoods.tableHeaders.rent')}</h3>
+            </div>
+            
+            <div className="flex items-end gap-4">
+              {/* Rent amount */}
+              <div>
+                <span className="text-sm text-gray-600 dark:text-gray-400">{t('expenses.amount')}</span>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">€{affordableRent.toFixed(2)}</p>
+              </div>
+              
+              {/* Rent percentage visualization */}
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{t('expenses.percentOfIncome')}</span>
+                  <span className={`text-sm font-medium ${isRentPercentageHealthy ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                    {rentPercentage.toFixed(1)}%
+                  </span>
+                </div>
+                
+                <div className="relative h-8 bg-neutral-200 dark:bg-neutral-700 rounded-md overflow-hidden">
+                  {/* Percentage zones */}
+                  <div className="absolute inset-0 flex">
+                    <div className="h-full bg-green-400/20 dark:bg-green-400/10" style={{ width: '30%' }}></div>
+                    <div className="h-full bg-amber-400/20 dark:bg-amber-400/10" style={{ width: '20%' }}></div>
+                    <div className="h-full bg-red-400/20 dark:bg-red-400/10" style={{ width: '50%' }}></div>
+                  </div>
+                  
+                  {/* Rent percentage indicator */}
+                  <div 
+                    className={`absolute top-0 h-full flex items-center justify-center ${
+                      isRentPercentageHealthy ? 'bg-green-500' : 'bg-amber-500'
+                    }`}
+                    style={{ 
+                      width: '4px', 
+                      left: `${Math.min(95, rentPercentage)}%`,
+                      transform: 'translateX(-2px)'
+                    }}
+                  >
+                    <div className={`absolute -top-1 w-3 h-3 rounded-full ${
+                      isRentPercentageHealthy ? 'bg-green-500' : 'bg-amber-500'
+                    }`}></div>
+                  </div>
+                  
+                  {/* Zone labels */}
+                  <div className="absolute inset-0 flex items-center text-[10px] font-medium">
+                    <div className="w-[30%] text-center text-green-700 dark:text-green-300">
+                      {t('expenses.healthy')}
+                    </div>
+                    <div className="w-[20%] text-center text-amber-700 dark:text-amber-300">
+                      {t('expenses.moderate')}
+                    </div>
+                    <div className="w-[50%] text-center text-red-700 dark:text-red-300">
+                      {t('expenses.high')}
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+                  {isRentPercentageHealthy 
+                    ? t('expenses.rentHealthyTip') 
+                    : t('expenses.rentHighTip')}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* D3.js Chart */}

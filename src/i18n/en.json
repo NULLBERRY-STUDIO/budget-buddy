@@ -69,6 +69,13 @@
     "budgetUsage": "Budget Usage",
     "remainingBudget": "Remaining Budget",
     "doingGreat": "You're doing great! You have {{percent}}% of your income left.",
+    "amount": "Amount",
+    "percentOfIncome": "Percent of Income",
+    "healthy": "Healthy",
+    "moderate": "Moderate",
+    "high": "High",
+    "rentHealthyTip": "Your rent is within the recommended 30% of income, which is considered financially healthy.",
+    "rentHighTip": "Your rent exceeds 30% of income. Financial experts recommend keeping rent below 30% for better financial stability.",
     "categories": {
       "groceries": "Groceries",
       "transportation": "Transportation",
