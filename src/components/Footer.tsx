@@ -41,7 +41,7 @@ export function Footer() {
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <a 
-              href="https://github.com/NULLBERRY-STUDIO/speedkarte" 
+              href="https://github.com/NULLBERRY-STUDIO/budget-buddy" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
