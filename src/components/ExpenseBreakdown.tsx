@@ -1,5 +1,5 @@
-
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+import { useRef, useEffect } from 'react';
+import * as d3 from 'd3';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getExpenseCategories } from '@/data/expenses';
 import { CakeSlice, Coffee, CreditCard, Euro, Leaf, ShoppingBag, Utensils, CheckCircle2, AlertCircle } from 'lucide-react';
@@ -27,6 +27,14 @@ const getCategoryIcon = (categoryId: string) => {
   }
 };
 
+// Define chart data types for better type safety
+interface ChartDataItem {
+  name: string;
+  value: number;
+  color: string;
+  id: string;
+}
+
 export function ExpenseBreakdown({ 
   monthlyIncome, 
   affordableRent, 
@@ -34,6 +42,7 @@ export function ExpenseBreakdown({
   expenses 
 }: ExpenseBreakdownProps) {
   const { t } = useTranslation();
+  const chartRef = useRef<HTMLDivElement>(null);
   
   // Calculate if income is sufficient
   const totalExpenses = Object.values(expenses).reduce((sum, value) => sum + value, 0) + affordableRent;
@@ -45,7 +54,7 @@ export function ExpenseBreakdown({
   const expenseCategories = getExpenseCategories();
   
   // Prepare data for pie chart - sort by value for better visualization
-  const chartData = [
+  const chartData: ChartDataItem[] = [
     { name: t('neighborhoods.tableHeaders.rent'), value: affordableRent, color: '#F27127', id: 'rent' },
     ...expenseCategories.map(category => ({
       name: t(`expenses.categories.${category.id}`),
@@ -54,11 +63,172 @@ export function ExpenseBreakdown({
       id: category.id
     }))
   ].sort((a, b) => b.value - a.value); // Sort by value descending
-  
+
+  // D3.js chart creation
+  useEffect(() => {
+    if (!chartRef.current) return;
+
+    // Clear any existing SVG
+    d3.select(chartRef.current).selectAll("*").remove();
+
+    // Set up dimensions
+    const width = chartRef.current.clientWidth;
+    const height = 350;
+    const radius = Math.min(width, height) / 2;
+
+    // Create SVG
+    const svg = d3.select(chartRef.current)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+    // Create pie generator
+    const pie = d3.pie<ChartDataItem>()
+      .value(d => d.value)
+      .sort(null);
+
+    // Create arc generator for pie slices
+    const arc = d3.arc<d3.PieArcDatum<ChartDataItem>>()
+      .innerRadius(radius * 0.4) // Donut chart style
+      .outerRadius(radius * 0.8);
+
+    // Create pie slices
+    const slices = svg.selectAll(".slice")
+      .data(pie(chartData))
+      .enter()
+      .append("g")
+      .attr("class", "slice");
+
+    // Add path for each slice
+    slices.append("path")
+      .attr("d", arc)
+      .attr("fill", d => d.data.color)
+      .attr("stroke", "white")
+      .style("stroke-width", "2px")
+      .style("opacity", 0.8)
+      .transition()
+      .duration(800)
+      .attrTween("d", function(d) {
+        const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+        return function(t) {
+          return arc(interpolate(t));
+        };
+      });
+
+    // Add hover effects
+    slices.on("mouseover", function(event, d) {
+      // Highlight the slice
+      d3.select(this).select("path")
+        .style("opacity", 1)
+        .transition()
+        .duration(300)
+        .attr("d", d3.arc<d3.PieArcDatum<ChartDataItem>>()
+          .innerRadius(radius * 0.4)
+          .outerRadius(radius * 0.85));
+      
+      // Create tooltip/legend
+      const tooltip = svg.append("g")
+        .attr("class", "chart-tooltip")
+        .style("opacity", 0)
+        .attr("transform", "translate(0, 0)");
+      
+      // Add background for tooltip
+      tooltip.append("rect")
+        .attr("x", -100)
+        .attr("y", 0)
+        .attr("width", 200)
+        .attr("height", 80)
+        .attr("rx", 8)
+        .attr("ry", 8)
+        .attr("fill", "rgba(255, 255, 255, 0.95)")
+        .attr("stroke", d.data.color)
+        .attr("stroke-width", 3)
+        .style("filter", "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3))");
+      
+      // Add color indicator
+      tooltip.append("rect")
+        .attr("x", -85)
+        .attr("y", 15)
+        .attr("width", 20)
+        .attr("height", 20)
+        .attr("rx", 3)
+        .attr("fill", d.data.color);
+      
+      // Add category name
+      tooltip.append("text")
+        .attr("x", -55)
+        .attr("y", 30)
+        .attr("text-anchor", "start")
+        .attr("font-size", "15px")
+        .attr("font-weight", "600")
+        .attr("fill", "#333333")
+        .text(d.data.name);
+      
+      // Add value
+      tooltip.append("text")
+        .attr("x", -85)
+        .attr("y", 55)
+        .attr("text-anchor", "start")
+        .attr("font-size", "16px")
+        .attr("font-weight", "bold")
+        .attr("fill", "#333333")
+        .text(`€${d.data.value.toFixed(2)}`);
+      
+      // Add percentage
+      const percentage = ((d.data.value / totalExpenses) * 100).toFixed(1);
+      tooltip.append("text")
+        .attr("x", 30)
+        .attr("y", 55)
+        .attr("text-anchor", "start")
+        .attr("font-size", "16px")
+        .attr("font-weight", "bold")
+        .attr("fill", d.data.color)
+        .text(`${percentage}%`);
+      
+      // Animate tooltip in
+      tooltip.transition()
+        .duration(300)
+        .style("opacity", 1);
+    }).on("mouseout", function() {
+      // Reset slice appearance
+      d3.select(this).select("path")
+        .style("opacity", 0.8)
+        .transition()
+        .duration(300)
+        .attr("d", arc);
+      
+      // Remove tooltip with fade effect
+      svg.selectAll(".chart-tooltip")
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+        .remove();
+    });
+
+    // Add center text
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("dy", "-0.5em")
+      .attr("font-size", "14px")
+      .attr("fill", "currentColor")
+      .text(t('expenses.totalExpenses'));
+
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("dy", "1em")
+      .attr("font-size", "18px")
+      .attr("font-weight", "bold")
+      .attr("fill", isAffordable ? "#22c55e" : "#ef4444")
+      .text(`€${totalExpenses.toFixed(0)}`);
+
+  }, [chartData, chartRef, t, totalExpenses, isAffordable]);
+
   return (
-    <Card className="berlin-card w-full overflow-hidden animate-fade-in border-berlin-amber/20 bg-gradient-to-br from-berlin-warmLight to-white dark:from-gray-900 dark:to-gray-800">
+    <Card className="berlin-card w-full overflow-hidden animate-fade-in border-berlin-amber/20 bg-gradient-to-br from-neutral-100 to-white dark:from-neutral-900 dark:to-neutral-800">
       <CardHeader className="pb-2 bg-gradient-to-r from-berlin-amber/10 to-berlin-orange/10 dark:from-berlin-amber/5 dark:to-berlin-orange/5 backdrop-blur-sm border-b border-berlin-amber/10">
-        <CardTitle className="flex items-center justify-between text-berlin-darkBlue dark:text-berlin-amber">
+        <CardTitle className="flex items-center justify-between text-gray-900 dark:text-white">
           <div className="flex items-center gap-2">
             <CakeSlice className="h-6 w-6 text-berlin-orange animate-pulse-subtle" />
             <span>{t('expenses.breakdown')}</span>
@@ -69,7 +239,7 @@ export function ExpenseBreakdown({
             <AlertCircle className="text-red-500 h-5 w-5" />
           )}
         </CardTitle>
-        <CardDescription className="text-berlin-darkBlue/70 dark:text-berlin-warmLight/70 font-medium">
+        <CardDescription className="text-gray-700 dark:text-gray-300 font-medium">
           {isAffordable 
             ? t('expenses.sufficient', { amount: remainingBudget.toFixed(2) })
             : t('expenses.insufficient', { amount: Math.abs(remainingBudget).toFixed(2) })
@@ -79,90 +249,58 @@ export function ExpenseBreakdown({
       
       <CardContent className="p-0">
         {/* Budget progress indicator */}
-        <div className="px-6 pt-4">
+        <div className="px-6 pt-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-berlin-darkBlue/80 dark:text-berlin-warmLight/80">{t('expenses.budgetUsage')}</span>
-            <span className="text-sm font-medium text-berlin-darkBlue/80 dark:text-berlin-warmLight/80">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('expenses.budgetUsage')}</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {budgetRatio.toFixed(0)}%
             </span>
           </div>
           <Progress 
             value={budgetRatio} 
-            className="h-2.5 bg-gray-200/50 dark:bg-gray-700/50" 
+            className="h-3 bg-neutral-200 dark:bg-neutral-700" 
             indicatorClassName={isAffordable ? "bg-gradient-to-r from-green-400 to-green-500" : "bg-gradient-to-r from-red-400 to-red-500"}
           />
         </div>
         
-        {/* Chart */}
-        <div className="h-[270px] w-full mt-2 p-2">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={chartData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                outerRadius={90}
-                fill="#8884d8"
-                dataKey="value"
-                animationDuration={800}
-                animationBegin={100}
-              >
-                {chartData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              <Tooltip 
-                formatter={(value) => [`€${Number(value).toFixed(2)}`, '']}
-                contentStyle={{ 
-                  borderRadius: '0.75rem', 
-                  border: 'none',
-                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(8px)',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  padding: '8px 12px',
-                  fontFamily: '"Playfair Display", serif'
-                }}
-              />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+        {/* D3.js Chart */}
+        <div ref={chartRef} className="w-full mt-6 px-4" style={{ height: "350px" }}></div>
         
         {/* Expense categories */}
-        <div className="px-6 pb-3">
-          <div className="grid grid-cols-1 gap-2 mt-1">
+        <div className="px-6 pb-6 mt-4">
+          <h3 className="text-base font-medium mb-3 text-gray-800 dark:text-gray-200">{t('expenses.breakdown')}</h3>
+          <div className="grid grid-cols-1 gap-3">
             {chartData.map((item) => (
-              <div key={item.id} className="flex items-center justify-between p-2 rounded-lg bg-gradient-to-r from-white/40 to-transparent dark:from-white/5 border border-berlin-amber/10 hover:border-berlin-amber/30 transition-all">
+              <div key={item.id} className="flex items-center justify-between p-3 rounded-lg bg-neutral-50 dark:bg-neutral-700 border border-gray-200 dark:border-gray-800 hover:border-berlin-amber/30 transition-all">
                 <div className="flex items-center gap-2">
                   {item.id === 'rent' ? (
                     <Euro className="h-5 w-5 text-berlin-orange" />
                   ) : (
                     getCategoryIcon(item.id)
                   )}
-                  <span className="text-sm font-medium">{item.name}</span>
+                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.name}</span>
                 </div>
-                <span className="font-semibold text-berlin-darkBlue dark:text-berlin-amber">€{item.value.toFixed(2)}</span>
+                <span className="font-semibold text-gray-900 dark:text-white">€{item.value.toFixed(2)}</span>
               </div>
             ))}
           </div>
         </div>
         
         {/* Income and expenses */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 p-4 bg-gradient-to-t from-berlin-amber/10 to-transparent border-t border-berlin-amber/10">
-          <div className="bg-white/60 dark:bg-gray-800/60 rounded-xl p-3 border border-berlin-amber/20 backdrop-blur-sm shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-gradient-to-t from-neutral-200/50 to-transparent dark:from-neutral-800/50 border-t border-gray-200 dark:border-gray-900">
+          <div className="bg-white dark:bg-neutral-800 rounded-xl p-4 border border-gray-200 dark:border-gray-900 shadow-sm">
             <div className="flex items-center gap-2">
               <Euro className="h-5 w-5 text-green-500" />
-              <h3 className="text-base font-medium text-berlin-darkBlue dark:text-berlin-amber">{t('expenses.income')}</h3>
+              <h3 className="text-base font-medium text-gray-900 dark:text-white">{t('expenses.income')}</h3>
             </div>
-            <p className="text-2xl font-bold text-green-500 mt-1">€{monthlyIncome.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-green-500 mt-2">€{monthlyIncome.toFixed(2)}</p>
           </div>
-          <div className="bg-white/60 dark:bg-gray-800/60 rounded-xl p-3 border border-berlin-amber/20 backdrop-blur-sm shadow-sm">
+          <div className="bg-white dark:bg-neutral-800 rounded-xl p-4 border border-gray-200 dark:border-gray-900 shadow-sm">
             <div className="flex items-center gap-2">
               <ShoppingBag className="h-5 w-5 text-berlin-orange" />
-              <h3 className="text-base font-medium text-berlin-darkBlue dark:text-berlin-amber">{t('expenses.totalExpenses')}</h3>
+              <h3 className="text-base font-medium text-gray-900 dark:text-white">{t('expenses.totalExpenses')}</h3>
             </div>
-            <p className={`text-2xl font-bold mt-1 ${isAffordable ? 'text-green-500' : 'text-red-500'}`}>
+            <p className={`text-2xl font-bold mt-2 ${isAffordable ? 'text-green-500' : 'text-red-500'}`}>
               €{totalExpenses.toFixed(2)}
             </p>
           </div>
@@ -170,13 +308,13 @@ export function ExpenseBreakdown({
         
         {/* Remaining budget section */}
         {isAffordable && (
-          <div className="p-4 bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 border-t border-green-100 dark:border-green-900/30">
+          <div className="p-6 bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 border-t border-green-100 dark:border-green-900/30">
             <div className="flex items-center gap-2">
               <Leaf className="h-5 w-5 text-green-500" />
               <h3 className="text-base font-medium text-green-700 dark:text-green-300">{t('expenses.remainingBudget')}</h3>
             </div>
-            <p className="text-2xl font-bold text-green-600 dark:text-green-400 mt-1">€{remainingBudget.toFixed(2)}</p>
-            <p className="text-sm text-green-600/70 dark:text-green-400/70 mt-1">
+            <p className="text-2xl font-bold text-green-600 dark:text-green-400 mt-2">€{remainingBudget.toFixed(2)}</p>
+            <p className="text-sm text-green-600/70 dark:text-green-400/70 mt-2">
               {t('expenses.doingGreat', { percent: ((remainingBudget / monthlyIncome) * 100).toFixed(0) })}
             </p>
           </div>
