@@ -1,6 +1,9 @@
 name = "budgetbuddy"
 compatibility_date = "2025-03-24"
 
+# Output directory for Pages
+pages_build_output_dir = "dist"
+
 [build]
 command = "bun install && bun run build"
 
