@@ -43,6 +43,16 @@ export function Footer() {
     if (isChangelogOpen) {
       setChangelogEntries([
         {
+          hash: '8e4f2b7',
+          date: '2025-03-29',
+          message: 'fix: Add missing translation strings for calculator results'
+        },
+        {
+          hash: 'c5d9a3e',
+          date: '2025-03-29',
+          message: 'feat: Update footer logo to link to nullberry.org'
+        },
+        {
           hash: '3f7d2a1',
           date: '2025-03-29',
           message: 'feat: Add version display to footer'
@@ -152,7 +162,7 @@ export function Footer() {
                 <Dialog open={isChangelogOpen} onOpenChange={setIsChangelogOpen}>
                   <DialogTrigger asChild>
                     <button className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors">
-                      v{import.meta.env.VITE_APP_VERSION || '1.0.0'}
+                      v{import.meta.env.VITE_APP_VERSION || '0.0.2'}
                     </button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[550px] max-h-[80vh] overflow-y-auto">
@@ -162,7 +172,7 @@ export function Footer() {
                     <div className="mt-4 space-y-4">
                       <div className="flex items-center space-x-2">
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
-                          v{import.meta.env.VITE_APP_VERSION || '1.0.0'}
+                          v{import.meta.env.VITE_APP_VERSION || '0.0.2'}
                         </span>
                       </div>
                       
