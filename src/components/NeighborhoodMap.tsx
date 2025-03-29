@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "lucide-react";
@@ -16,11 +15,11 @@ import {
 import { useTranslation } from 'react-i18next';
 
 interface NeighborhoodMapProps {
-  affordableBudget: number;
+  affordableRent: number;
   roomType: keyof Neighborhood['averageRent'];
 }
 
-export function NeighborhoodMap({ affordableBudget, roomType }: NeighborhoodMapProps) {
+export function NeighborhoodMap({ affordableRent, roomType }: NeighborhoodMapProps) {
   const { t } = useTranslation();
   const [affordable, setAffordable] = useState<Neighborhood[]>([]);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
@@ -60,7 +59,7 @@ export function NeighborhoodMap({ affordableBudget, roomType }: NeighborhoodMapP
   useEffect(() => {
     if (neighborhoods.length === 0) return;
     
-    const filtered = neighborhoods.filter(n => n.averageRent[roomType] <= affordableBudget);
+    const filtered = neighborhoods.filter(n => n.averageRent[roomType] <= affordableRent);
     const sorted = [...filtered].sort((a, b) => a.averageRent[roomType] - b.averageRent[roomType]);
     
     setAffordable(sorted);
@@ -73,7 +72,7 @@ export function NeighborhoodMap({ affordableBudget, roomType }: NeighborhoodMapP
     if (topFiveIds.length > 0 && !selectedNeighborhoodId) {
       setSelectedNeighborhoodId(topFiveIds[0]);
     }
-  }, [affordableBudget, roomType, neighborhoods, selectedNeighborhoodId]);
+  }, [affordableRent, roomType, neighborhoods, selectedNeighborhoodId]);
 
   const getRoomTypeLabel = () => {
     switch(roomType) {

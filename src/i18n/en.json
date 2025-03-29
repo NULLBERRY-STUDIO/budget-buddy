@@ -20,7 +20,9 @@
     "currentSelection": "Current Selection",
     "recommendedValue": "Recommended",
     "highValue": "Above Recommended",
+    "berlinAverage": "Berlin Average",
     "rentPercentageHealthyTip": "Financial experts recommend keeping rent at or below 30% of your income for better financial stability.",
+    "rentPercentageBerlinTip": "The average Berliner spends about 36% of their income on rent. This represents the current market reality rather than the financial ideal.",
     "rentPercentageHighTip": "Your rent percentage is above the recommended 30%. Consider if this fits your financial situation.",
     "apartmentSize": "Apartment Size",
     "rooms": {
@@ -38,6 +40,8 @@
       "reset": "Reset"
     },
     "results": {
+      "title": "Results",
+      "description": "Here's what your budget looks like based on your inputs",
       "affordableRent": "Your Affordable Monthly Rent",
       "basedOn": "Based on your income of €{{income}} and {{percentage}}% rent rule"
     }
@@ -106,7 +110,18 @@
     "email": "Email",
     "studioName": "Nullberry",
     "studioSuffix": "Studio",
-    "studioDescription": "An indie software studio dedicated to crafting better software & tools—no subscriptions, no ads, no hidden monetization tricks."
+    "studioDescription": "An indie software studio dedicated to crafting better software & tools—no subscriptions, no ads, no hidden monetization tricks.",
+    "connect": "Connect With Us",
+    "sourceCode": "Source Code",
+    "imprint": "Imprint",
+    "madeWithCare": "Made with care. No tracking, no cookies.",
+    "semanticVersioning": "This project follows semantic versioning (major.minor.patch)",
+    "major": "Major",
+    "minor": "Minor",
+    "patch": "Patch",
+    "majorDesc": "Breaking changes",
+    "minorDesc": "New features (backwards compatible)",
+    "patchDesc": "Bug fixes and small changes"
   },
   "common": {
     "dataAsOf": "Data as of"

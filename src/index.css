@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,74 +6,56 @@
 
 @layer base {
   :root {
-    /* Light mode - Morning Garden */
-    --background: 43 100% 96%;
-    --foreground: 20 14% 24%;
+    /* Light mode - Modern UI */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 24%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14% 24%;
-    --primary: 27 96% 61%;
-    --primary-foreground: 60 9% 98%;
-    --secondary: 60 55% 94%;
-    --secondary-foreground: 24 9% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 43 96% 56%;
-    --accent-foreground: 24 9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9% 98%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 27 96% 61%;
-    --radius: 0.75rem;
+    --popover-foreground: 222 47% 11%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 239 84% 67%;
+    --radius: 0.5rem;
     
-    /* Secret Garden Colors - Light Mode */
-    --berlin-yellow: 43 96% 56%;
-    --berlin-amber: 38 92% 50%;
-    --berlin-orange: 27 96% 61%;
-    --berlin-red: 0 91% 71%;
-    --berlin-blue: 199 64% 73%;
-    --berlin-darkBlue: 201 100% 36%;
-    --berlin-gray: 210 20% 98%;
-    --berlin-warmLight: 43 100% 96%;
-    
-    /* Garden Colors */
-    --garden-cream: 39 100% 97%;
-    --garden-latte: 27 67% 82%;
-    --garden-mocha: 25 63% 42%;
-    --garden-espresso: 22 28% 21%;
-    --garden-mint: 164 42% 87%;
-    --garden-rose: 347 77% 50%;
-    --garden-cinnamon: 25 49% 47%;
-    --garden-caramel: 30 77% 80%;
-    --garden-leaf: 142 72% 29%;
-    --garden-sky: 204 71% 53%;
-    --garden-lavender: 260 60% 65%;
-    --garden-honey: 43 87% 84%;
+    /* Visualization Colors */
+    --success: 152 76% 44%;
+    --warning: 38 92% 50%;
+    --danger: 346 87% 59%;
+    --info: 239 84% 67%;
   }
 
   .dark {
-    /* Dark mode - Evening Garden */
-    --background: 20 14% 8%;
-    --foreground: 60 9% 98%;
-    --card: 20 14% 13%;
-    --card-foreground: 60 9% 98%;
-    --popover: 20 14% 13%;
-    --popover-foreground: 60 9% 98%;
-    --primary: 38 92% 50%;
-    --primary-foreground: 12 6% 15%;
-    --secondary: 12 6% 15%;
-    --secondary-foreground: 60 9% 98%;
-    --muted: 12 6% 15%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 12 6% 15%;
-    --accent-foreground: 60 9% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 9% 98%;
-    --border: 12 6% 24%;
-    --input: 12 6% 24%;
-    --ring: 38 92% 50%;
+    /* Dark mode - Modern UI */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 239 84% 67%;
   }
 }
 
@@ -83,15 +64,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f5a623' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236366f1' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
     background-attachment: fixed;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -126,38 +107,26 @@
   }
 }
 
-/* Berlin Theme Styles */
-.berlin-card {
-  @apply rounded-xl border bg-card text-card-foreground shadow-sm;
+/* Modern UI Styles */
+.modern-card {
+  @apply rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm;
 }
 
-.berlin-heading {
-  @apply text-2xl font-semibold tracking-tight font-serif;
+.modern-heading {
+  @apply text-2xl font-semibold tracking-tight font-sans;
 }
 
-.berlin-subheading {
-  @apply text-xl font-semibold tracking-tight font-serif;
+.modern-subheading {
+  @apply text-xl font-semibold tracking-tight font-sans;
 }
 
-.berlin-label {
-  @apply font-medium text-foreground;
+.modern-label {
+  @apply font-medium text-slate-800 dark:text-slate-200;
 }
 
-/* Secret Garden Café Theme Styles */
-.cafe-header {
-  @apply bg-gradient-to-r from-berlin-amber to-berlin-orange text-white;
-}
-
-.cafe-card {
-  @apply bg-white bg-opacity-80 backdrop-blur-sm border border-berlin-amber/20 rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
-}
-
-.warm-gradient {
-  @apply bg-gradient-to-tr from-berlin-warmLight to-white dark:from-gray-900 dark:to-gray-800;
-}
-
+/* Card styles */
 .glass-card {
-  @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-berlin-amber/20;
+  @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-200 dark:border-slate-800;
 }
 
 .hover-lift {
@@ -230,180 +199,6 @@
   }
 }
 
-/* Secret Garden specific animations */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin 20s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Flower bloom animation */
-.animate-bloom {
-  animation: bloom 5s ease-in-out infinite;
-}
-
-@keyframes bloom {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* Page turn animation for transitions */
-.animate-page-turn {
-  animation: page-turn 0.8s ease-out;
-  transform-origin: left center;
-}
-
-@keyframes page-turn {
-  from {
-    transform: rotateY(-90deg);
-    opacity: 0;
-  }
-  to {
-    transform: rotateY(0);
-    opacity: 1;
-  }
-}
-
-/* Dappled light effect */
-.dappled-light {
-  position: relative;
-  overflow: hidden;
-}
-
-.dappled-light::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 40%),
-                    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2) 0%, transparent 30%),
-                    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.2) 0%, transparent 30%);
-  animation: dappled-shift 10s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes dappled-shift {
-  0% {
-    background-position: 0% 0%, 0% 0%, 0% 0%;
-  }
-  100% {
-    background-position: 10% 20%, -10% 10%, 5% -5%;
-  }
-}
-
-/* Tree and foliage effect */
-.tree-canopy {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Cpath fill='%234CAF50' fill-opacity='0.1' d='M0 0h400v200H0z'/%3E%3C/svg%3E");
-  opacity: 0.15;
-}
-
-/* Bicycle at entrance effect */
-.bicycle-decoration {
-  @apply absolute bottom-4 right-4 text-berlin-darkBlue/70 dark:text-berlin-amber/70;
-  animation: bicycle-sway 10s ease-in-out infinite;
-}
-
-@keyframes bicycle-sway {
-  0%, 100% {
-    transform: rotate(-1deg);
-  }
-  50% {
-    transform: rotate(1deg);
-  }
-}
-
-/* Floral divider styling */
-.floral-divider {
-  position: relative;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.3), transparent);
-}
-
-.floral-divider::before,
-.floral-divider::after {
-  content: '✿';
-  position: absolute;
-  top: -10px;
-  color: rgba(245, 166, 35, 0.7);
-  font-size: 16px;
-}
-
-.floral-divider::before {
-  left: calc(50% - 30px);
-}
-
-.floral-divider::after {
-  right: calc(50% - 30px);
-}
-
-/* Card styling for café menu items */
-.menu-card {
-  @apply relative rounded-xl bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border border-berlin-amber/20 
-         p-5 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden;
-}
-
-.menu-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 L21 21 L19 21 Z' fill='%23f5a623' fill-opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-/* Garden button styles */
-.garden-button {
-  @apply relative overflow-hidden rounded-full bg-gradient-to-r from-berlin-amber to-berlin-orange 
-         text-white font-medium py-2 px-6 shadow-md hover:shadow-lg transition-all duration-300
-         hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-berlin-amber;
-}
-
-.garden-button::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
-}
-
-.garden-button:hover::after {
-  transform: scale(1);
-  opacity: 1;
-}
-
 /* Additional RTL specific styles */
 [dir="rtl"] .mr-1 {
   margin-right: 0;
@@ -446,4 +241,184 @@
 [dir="rtl"] .leaflet-control-container .leaflet-right {
   right: auto;
   left: 0;
+}
+
+/* Subtle light effect */
+.subtle-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.subtle-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 40%),
+                    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2) 0%, transparent 30%),
+                    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.2) 0%, transparent 30%);
+  animation: light-shift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes light-shift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 10% 20%, -10% 10%, 5% -5%;
+  }
+}
+
+/* Gradient background effect */
+.gradient-bg {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+/* Modern divider styling */
+.modern-divider {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+}
+
+.modern-divider::before,
+.modern-divider::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(99, 102, 241, 0.5);
+}
+
+.modern-divider::before {
+  left: calc(50% - 30px);
+}
+
+.modern-divider::after {
+  right: calc(50% - 30px);
+}
+
+/* Card styling for menu items */
+.menu-card {
+  @apply relative rounded-xl bg-white/80 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 
+         p-5 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden;
+}
+
+.menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 L21 21 L19 21 Z' fill='%236366f1' fill-opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Modern button styles */
+.modern-button {
+  @apply relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 
+         text-white font-medium py-2 px-6 shadow-md hover:shadow-lg transition-all duration-300
+         hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-400;
+}
+
+.modern-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.modern-button:hover::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Soft shadow effect */
+.soft-shadow {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+.soft-shadow-lg {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-600;
+}
+
+/* Dot pattern background */
+.dot-pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1' fill='%236366f1' fill-opacity='0.1' /%3E%3C/svg%3E");
+}
+
+/* Grid pattern background */
+.grid-pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L40 0 L40 40 L0 40 Z' fill='none' stroke='%236366f1' stroke-opacity='0.05' stroke-width='1' /%3E%3C/svg%3E");
+}
+
+/* Visualization styles */
+.visualization-container {
+  @apply relative rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 overflow-hidden;
+}
+
+.visualization-label {
+  @apply text-xs font-medium text-slate-500 dark:text-slate-400;
+}
+
+.visualization-value {
+  @apply text-lg font-semibold text-slate-900 dark:text-white;
+}
+
+.visualization-bar {
+  @apply h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden;
+}
+
+.visualization-bar-fill {
+  @apply h-full rounded-full bg-indigo-500;
+}
+
+.visualization-bar-fill-success {
+  @apply h-full rounded-full bg-emerald-500;
+}
+
+.visualization-bar-fill-warning {
+  @apply h-full rounded-full bg-amber-500;
+}
+
+.visualization-bar-fill-danger {
+  @apply h-full rounded-full bg-rose-500;
+}
+
+/* Input styles */
+.modern-input {
+  @apply w-full rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 
+         px-3 py-2 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500
+         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+}
+
+.modern-select {
+  @apply w-full rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 
+         px-3 py-2 text-slate-900 dark:text-slate-100 
+         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+}
+
+.modern-checkbox {
+  @apply rounded border-slate-300 dark:border-slate-700 text-indigo-500 focus:ring-indigo-500;
+}
+
+.modern-radio {
+  @apply border-slate-300 dark:border-slate-700 text-indigo-500 focus:ring-indigo-500;
 }

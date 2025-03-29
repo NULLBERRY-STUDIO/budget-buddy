@@ -33,6 +33,8 @@
       "reset": "Réinitialiser"
     },
     "results": {
+      "title": "Résultats",
+      "description": "Voici à quoi ressemble votre budget en fonction de vos données",
       "affordableRent": "Votre loyer mensuel abordable",
       "basedOn": "Basé sur votre revenu de €{{income}} et la règle de {{percentage}}% pour le loyer"
     }

@@ -33,6 +33,8 @@
       "reset": "Reiniciar"
     },
     "results": {
+      "title": "Resultados",
+      "description": "Así es como se ve tu presupuesto según tus datos",
       "affordableRent": "Tu alquiler mensual asequible",
       "basedOn": "Basado en tus ingresos de €{{income}} y la regla del {{percentage}}% de alquiler"
     }

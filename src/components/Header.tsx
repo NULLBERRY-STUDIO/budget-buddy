@@ -1,40 +1,90 @@
-import { Euro, Moon, Sun, Building2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useTheme } from "@/context/ThemeContext";
-import { LanguageSelector } from "@/components/LanguageSelector";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Calculator, Moon, Sun, Globe } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
+import { languages } from "@/i18n";
 
-export const Header = () => {
+export function Header() {
+  const { t, i18n } = useTranslation();
   const { theme, setTheme } = useTheme();
-  const { t } = useTranslation();
-
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setIsLanguageMenuOpen(false);
+    // Update document direction based on language
+    document.documentElement.dir = languages[lng as keyof typeof languages].dir;
+  };
+  
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 py-4 bg-neutral-100/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 py-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center">
-              <Building2 className="w-6 h-6 text-berlin-orange" />
-              <span className="text-lg font-medium ml-2">BudgetBuddy</span>
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <Calculator className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+            <div className="flex flex-col sm:flex-row sm:items-baseline">
+              <span className="text-lg font-semibold text-slate-900 dark:text-white">Budget Buddy</span>
+              <span className="hidden sm:inline-block text-xs text-slate-500 dark:text-slate-400 sm:ml-2">
+                {t('app.subtitle')}
+              </span>
             </div>
-            <span className="text-berlin-orange text-sm hidden sm:inline">Nullberry Studio</span>
           </div>
-
-          <div className="flex items-center space-x-2">
-            <LanguageSelector />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full w-9 h-9"
+          
+          {/* Navigation */}
+          <div className="flex items-center gap-4">
+            <nav className="hidden sm:flex items-center gap-4">
+         
+          
+            </nav>
+            
+            {/* Language Switcher */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                aria-label="Change language"
+              >
+                <Globe className="h-4 w-4" />
+              </button>
+              
+              {isLanguageMenuOpen && (
+                <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 z-50 overflow-hidden">
+                  <div className="py-1 max-h-60 overflow-y-auto" role="menu" aria-orientation="vertical">
+                    {Object.entries(languages).map(([code, { nativeName }]) => (
+                      <button
+                        key={code}
+                        onClick={() => changeLanguage(code)}
+                        className={`w-full text-left px-4 py-2 text-sm ${
+                          i18n.language === code 
+                            ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400' 
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                        }`}
+                        role="menuitem"
+                      >
+                        {nativeName}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Theme toggle */}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">{t("theme.toggle")}</span>
-            </Button>
+              {theme === 'dark' ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
+            </button>
           </div>
         </div>
       </div>
     </header>
   );
-};
+}

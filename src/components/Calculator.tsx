@@ -11,7 +11,7 @@ import { Neighborhood, fetchNeighborhoods } from "@/data/neighborhoods";
 import { calculateRequiredExpenses, fetchExpenseCategories, getExpenseCategories } from "@/data/expenses";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Calculator as CalculatorIcon, Users, User, Check, RefreshCcw, Euro, Calendar, Home, AlertTriangle, CheckCircle } from "lucide-react";
+import { Calculator as CalculatorIcon, Users, User, Check, RefreshCcw, Euro, Calendar, Home, AlertTriangle, CheckCircle, Info } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export function Calculator() {
@@ -21,7 +21,7 @@ export function Calculator() {
   // Form state
   const [monthlyIncome, setMonthlyIncome] = useState(2500);
   const [isFamilyBudget, setIsFamilyBudget] = useState(false);
-  const [rentPercentage, setRentPercentage] = useState(30);
+  const [rentPercentage, setRentPercentage] = useState(36); // Default to Berlin average
   const [roomType, setRoomType] = useState<keyof Neighborhood['averageRent']>("oneRoom");
   const [expenses, setExpenses] = useState<Record<string, number>>({});
   
@@ -138,7 +138,7 @@ export function Calculator() {
     setShowResults(false);
     setMonthlyIncome(2500);
     setIsFamilyBudget(false);
-    setRentPercentage(30);
+    setRentPercentage(36); // Reset to Berlin average
     setRoomType("oneRoom");
     
     // Reset expenses to defaults
@@ -182,8 +182,8 @@ export function Calculator() {
     return (
       <div className="w-full max-w-4xl mx-auto flex items-center justify-center p-12">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-berlin-amber mb-4"></div>
-          <p className="text-muted-foreground">Loading latest Berlin rental data...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mb-4"></div>
+          <p className="text-slate-600 dark:text-slate-400">Loading latest rental data...</p>
         </div>
       </div>
     );
@@ -191,20 +191,20 @@ export function Calculator() {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <Card className="berlin-card w-full animate-fade-in warm-gradient">
-        <CardHeader className="pb-4">
+      <Card className="w-full animate-fade-in bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+        <CardHeader className="pb-4 bg-slate-50 dark:bg-slate-950">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
             <div>
-              <CardTitle className="berlin-heading flex items-center space-x-3 text-3xl md:text-4xl">
-                <CalculatorIcon className="h-8 w-8 text-berlin-yellow" />
+              <CardTitle className="flex items-center space-x-3 text-3xl md:text-4xl text-slate-900 dark:text-white">
+                <CalculatorIcon className="h-8 w-8 text-indigo-500 dark:text-indigo-400" />
                 <span>{t('calculator.title')}</span>
               </CardTitle>
-              <CardDescription className="text-base mt-1">
+              <CardDescription className="text-base mt-1 text-slate-600 dark:text-slate-400">
                 {t('calculator.description')}
               </CardDescription>
             </div>
             {lastDataUpdate && (
-              <div className="flex items-center text-xs text-muted-foreground mt-2 sm:mt-0">
+              <div className="flex items-center text-xs text-slate-500 dark:text-slate-400 mt-2 sm:mt-0">
                 <Calendar className="h-3 w-3 mr-1" />
                 <span>{t('common.dataAsOf')}: {formatDate(lastDataUpdate)}</span>
               </div>
@@ -214,9 +214,9 @@ export function Calculator() {
         <CardContent>
           <div className="grid gap-8">
             <div className="grid gap-3">
-              <Label htmlFor="income" className="berlin-label text-base">{t('calculator.income')}</Label>
+              <Label htmlFor="income" className="text-base text-slate-800 dark:text-slate-200">{t('calculator.income')}</Label>
               <div className="relative">
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-berlin-amber">
+                <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-indigo-500 dark:text-indigo-400">
                   <Euro className="h-5 w-5" />
                 </div>
                 <Input
@@ -225,18 +225,18 @@ export function Calculator() {
                   min={0}
                   value={monthlyIncome}
                   onChange={(e) => setMonthlyIncome(Number(e.target.value))}
-                  className="pl-12 text-lg h-14 font-medium bg-white/90 dark:bg-gray-800/90 border-berlin-gray/20 shadow-md"
+                  className="pl-12 text-lg h-14 font-medium bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 shadow-sm"
                 />
               </div>
             </div>
             
-            <div className="flex items-center justify-between p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl border border-berlin-gray/20 shadow-md">
+            <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
               <div className="flex items-center space-x-3">
-                <Label htmlFor="familyBudget" className="berlin-label text-base cursor-pointer">
+                <Label htmlFor="familyBudget" className="text-base cursor-pointer text-slate-800 dark:text-slate-200">
                   {isFamilyBudget ? (
-                    <Users className="h-5 w-5 inline mr-2 text-berlin-yellow" />
+                    <Users className="h-5 w-5 inline mr-2 text-indigo-500 dark:text-indigo-400" />
                   ) : (
-                    <User className="h-5 w-5 inline mr-2 text-berlin-yellow" />
+                    <User className="h-5 w-5 inline mr-2 text-indigo-500 dark:text-indigo-400" />
                   )}
                   {isFamilyBudget ? t('calculator.budget.family') : t('calculator.budget.single')}
                 </Label>
@@ -249,68 +249,80 @@ export function Calculator() {
               />
             </div>
             
-            <div className="space-y-4 p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl border border-berlin-gray/20 shadow-md">
+            <div className="space-y-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
               <div className="flex items-center gap-2 mb-3">
-                <Home className="h-5 w-5 text-berlin-yellow" />
-                <Label htmlFor="rentPercentage" className="berlin-label text-base">
+                <Home className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                <label htmlFor="rentPercentage" className="text-sm font-medium text-slate-800 dark:text-slate-100">
                   {t('calculator.rentPercentage')}
-                </Label>
+                </label>
               </div>
               
               {/* Rent percentage selector */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {t('calculator.currentSelection')}: <span className="font-bold">{rentPercentage}%</span>
-                  </span>
+                  <span className="text-sm font-medium text-slate-600 dark:text-slate-300">{rentPercentage.toFixed(1)}%</span>
                   <div className="flex items-center gap-1">
                     {rentPercentage <= 30 ? (
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-emerald-500" />
+                    ) : rentPercentage === 36 ? (
+                      <Info className="h-4 w-4 text-slate-500" />
                     ) : (
                       <AlertTriangle className="h-4 w-4 text-amber-500" />
                     )}
                     <span className={`text-sm font-medium ${
-                      rentPercentage <= 30 ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'
+                      rentPercentage <= 30 ? 'text-emerald-600 dark:text-emerald-400' : 
+                      rentPercentage === 36 ? 'text-slate-600 dark:text-slate-400' :
+                      'text-amber-600 dark:text-amber-400'
                     }`}>
                       {rentPercentage <= 30 
                         ? t('calculator.recommendedValue') 
+                        : rentPercentage === 36
+                        ? t('calculator.berlinAverage')
                         : t('calculator.highValue')}
                     </span>
                   </div>
                 </div>
                 
                 {/* Percentage visualization */}
-                <div className="relative h-16 bg-neutral-100 dark:bg-neutral-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+                <div className="relative h-16 bg-slate-50 dark:bg-slate-800 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm">
                   {/* Percentage zones with brighter gradients */}
                   <div className="absolute inset-0 flex">
-                    <div className="w-[30%] h-full bg-gradient-to-r from-green-300/50 to-emerald-400/40 dark:from-green-400/60 dark:to-emerald-300/50"></div>
-                    <div className="w-[20%] h-full bg-gradient-to-r from-amber-300/50 to-yellow-400/40 dark:from-amber-400/60 dark:to-yellow-300/50"></div>
-                    <div className="w-[50%] h-full bg-gradient-to-r from-rose-300/50 to-red-400/40 dark:from-rose-400/60 dark:to-red-300/50"></div>
+                    <div className="w-[30%] h-full bg-gradient-to-r from-emerald-300/50 to-emerald-400/40 dark:from-emerald-500/60 dark:to-emerald-400/50"></div>
+                    <div className="w-[6%] h-full bg-gradient-to-r from-amber-300/50 to-amber-400/40 dark:from-amber-500/60 dark:to-amber-400/50"></div>
+                    <div className="w-[64%] h-full bg-gradient-to-r from-rose-300/50 to-rose-400/40 dark:from-rose-500/60 dark:to-rose-400/50"></div>
                   </div>
                   
                   {/* Percentage buttons */}
                   <div className="absolute inset-0 flex">
-                    {[20, 25, 30, 35, 40, 45].map((percent) => (
+                    {[20, 25, 30, 36, 40, 45].map((percent) => (
                       <button
                         key={percent}
                         onClick={() => setRentPercentage(percent)}
                         className={`h-full flex-1 flex flex-col items-center justify-center relative transition-all ${
                           rentPercentage === percent 
-                            ? 'bg-white dark:bg-neutral-800 shadow-md z-10 scale-105' 
-                            : 'hover:bg-white/50 dark:hover:bg-neutral-600/50'
+                            ? 'bg-white dark:bg-slate-800 shadow-md z-10 scale-105' 
+                            : 'hover:bg-white/50 dark:hover:bg-slate-700/50'
+                        } ${
+                          percent === 36 && rentPercentage !== percent
+                            ? 'border-t-2 border-slate-400 dark:border-slate-500'
+                            : ''
                         }`}
                       >
                         <span className={`text-lg font-bold ${
                           rentPercentage === percent 
                             ? percent <= 30 
-                              ? 'text-green-600 dark:text-green-400' 
-                              : 'text-amber-600 dark:text-amber-400'
-                            : 'text-gray-700 dark:text-gray-300'
+                              ? 'text-emerald-600 dark:text-emerald-400' 
+                              : percent === 36
+                                ? 'text-slate-600 dark:text-slate-300'
+                                : 'text-amber-600 dark:text-amber-400'
+                            : percent === 36
+                              ? 'text-slate-700 dark:text-slate-300 underline decoration-dotted decoration-slate-500'
+                              : 'text-slate-700 dark:text-slate-300'
                         }`}>
                           {percent}%
                         </span>
                         {rentPercentage === percent && (
-                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 rounded-t-full bg-berlin-yellow"></div>
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 rounded-t-full bg-indigo-500"></div>
                         )}
                       </button>
                     ))}
@@ -318,16 +330,18 @@ export function Calculator() {
                 </div>
                 
                 {/* Explanation text */}
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
                   {rentPercentage <= 30 
                     ? t('calculator.rentPercentageHealthyTip') 
+                    : rentPercentage === 36
+                    ? t('calculator.rentPercentageBerlinTip')
                     : t('calculator.rentPercentageHighTip')}
                 </p>
               </div>
             </div>
             
             <div className="space-y-4">
-              <Label className="berlin-label text-base">{t('calculator.apartmentSize')}</Label>
+              <Label className="text-base text-slate-800 dark:text-slate-200">{t('calculator.apartmentSize')}</Label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <Button
                   variant={roomType === "oneRoom" ? "default" : "outline"}
@@ -365,16 +379,16 @@ export function Calculator() {
                 <TabsTrigger value="required" className="text-base">{t('calculator.expenses.required')}</TabsTrigger>
                 <TabsTrigger value="additional" className="text-base">{t('calculator.expenses.additional')}</TabsTrigger>
               </TabsList>
-              <TabsContent value="required" className="mt-6 space-y-5 p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl border border-berlin-gray/20 shadow-md">
+              <TabsContent value="required" className="mt-6 space-y-5 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 {getExpenseCategories()
                   .filter(category => category.isRequired)
                   .map(category => (
                     <div key={category.id} className="grid grid-cols-2 gap-4 items-center">
-                      <Label htmlFor={category.id} className="berlin-label text-base">
+                      <Label htmlFor={category.id} className="text-base text-slate-800 dark:text-slate-200">
                         {category.name}
                       </Label>
                       <div className="relative">
-                        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-berlin-amber">
+                        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-indigo-500 dark:text-indigo-400">
                           <Euro className="h-5 w-5" />
                         </div>
                         <Input
@@ -388,23 +402,22 @@ export function Calculator() {
                               [category.id]: Number(e.target.value)
                             })
                           }
-                          className="pl-12 text-base font-medium bg-white/90 dark:bg-gray-800/90"
+                          className="pl-12 text-base font-medium bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700"
                         />
                       </div>
                     </div>
-                  ))
-                }
+                  ))}
               </TabsContent>
-              <TabsContent value="additional" className="mt-6 space-y-5 p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl border border-berlin-gray/20 shadow-md">
+              <TabsContent value="additional" className="mt-6 space-y-5 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 {getExpenseCategories()
                   .filter(category => !category.isRequired)
                   .map(category => (
                     <div key={category.id} className="grid grid-cols-2 gap-4 items-center">
-                      <Label htmlFor={category.id} className="berlin-label text-base">
+                      <Label htmlFor={category.id} className="text-base text-slate-800 dark:text-slate-200">
                         {category.name}
                       </Label>
                       <div className="relative">
-                        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-berlin-amber">
+                        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-indigo-500 dark:text-indigo-400">
                           <Euro className="h-5 w-5" />
                         </div>
                         <Input
@@ -418,63 +431,62 @@ export function Calculator() {
                               [category.id]: Number(e.target.value)
                             })
                           }
-                          className="pl-12 text-base font-medium bg-white/90 dark:bg-gray-800/90"
+                          className="pl-12 text-base font-medium bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700"
                         />
                       </div>
                     </div>
-                  ))
-                }
+                  ))}
               </TabsContent>
             </Tabs>
             
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <Button 
-                onClick={calculateAffordableRent} 
-                className="w-full bg-berlin-yellow hover:bg-berlin-yellow/90 text-black font-semibold transition-all h-14 text-lg"
+                onClick={calculateAffordableRent}
+                size="lg"
+                className="flex-1 h-14 text-base font-semibold"
               >
-                <Check className="mr-2 h-5 w-5" />
-                {t('calculator.buttons.calculate')}
+                <Check className="mr-2 h-5 w-5" /> {t('calculator.buttons.calculate')}
               </Button>
               <Button 
-                variant="outline" 
                 onClick={resetCalculator}
-                className="w-1/3 h-14 text-base"
+                variant="outline"
+                size="lg"
+                className="flex-1 h-14 text-base font-semibold"
               >
-                <RefreshCcw className="mr-2 h-5 w-5" />
-                {t('calculator.buttons.reset')}
+                <RefreshCcw className="mr-2 h-5 w-5" /> {t('calculator.buttons.reset')}
               </Button>
             </div>
           </div>
+          
+          {/* Results Section */}
+          {showResults && (
+            <div id="results-section" className="mt-16 animate-fade-in">
+              <div className="flex flex-col gap-8">
+                <div className="text-center">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2">
+                    {t('calculator.results.title')}
+                  </h2>
+                  <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    {t('calculator.results.description')}
+                  </p>
+                </div>
+                
+                <ExpenseBreakdown 
+                  monthlyIncome={monthlyIncome}
+                  affordableRent={affordableRent}
+                  isFamilyBudget={isFamilyBudget}
+                  expenses={expenses}
+                />
+                
+                <NeighborhoodMap 
+                  affordableRent={affordableRent}
+                  roomType={roomType}
+                />
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
-      
-      {showResults && (
-        <div id="results-section" className="mt-8 space-y-8 animate-slide-up">
-          <div className="berlin-card text-center py-8 warm-gradient">
-            <h2 className="berlin-subheading mb-2">{t('calculator.results.affordableRent')}</h2>
-            <p className="text-5xl sm:text-6xl font-bold text-berlin-yellow bg-clip-text text-transparent bg-gradient-to-r from-berlin-yellow to-amber-500">
-              €{affordableRent.toFixed(0)}
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              {t('calculator.results.basedOn', { income: monthlyIncome.toFixed(0), percentage: rentPercentage })}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <ExpenseBreakdown 
-              monthlyIncome={monthlyIncome}
-              affordableRent={affordableRent}
-              isFamilyBudget={isFamilyBudget}
-              expenses={expenses}
-            />
-            
-            <NeighborhoodMap 
-              affordableBudget={affordableRent}
-              roomType={roomType}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

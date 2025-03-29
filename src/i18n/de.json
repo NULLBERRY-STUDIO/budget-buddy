@@ -17,6 +17,13 @@
     },
     "rentPercentage": "Mietanteil",
     "recommended": "30% werden empfohlen",
+    "currentSelection": "Aktuelle Auswahl",
+    "recommendedValue": "Empfohlen",
+    "highValue": "Über Empfehlung",
+    "berlinAverage": "Berliner Durchschnitt",
+    "rentPercentageHealthyTip": "Finanzexperten empfehlen, die Miete bei oder unter 30% deines Einkommens zu halten, für bessere finanzielle Stabilität.",
+    "rentPercentageBerlinTip": "Der durchschnittliche Berliner gibt etwa 36% seines Einkommens für Miete aus. Dies spiegelt die aktuelle Marktrealität wider und nicht das finanzielle Ideal.",
+    "rentPercentageHighTip": "Dein Mietanteil liegt über den empfohlenen 30%. Überlege, ob dies zu deiner finanziellen Situation passt.",
     "apartmentSize": "Wohnungsgröße",
     "rooms": {
       "one": "1 Zimmer",
@@ -33,6 +40,8 @@
       "reset": "Zurücksetzen"
     },
     "results": {
+      "title": "Ergebnisse",
+      "description": "So sieht dein Budget basierend auf deinen Eingaben aus",
       "affordableRent": "Deine machbare monatliche Miete",
       "basedOn": "Basierend auf deinem Einkommen von €{{income}} und der {{percentage}}%-Mietregel"
     }
@@ -94,7 +103,18 @@
     "email": "E-Mail",
     "studioName": "Nullberry",
     "studioSuffix": "Studio",
-    "studioDescription": "Ein unabhängiges Softwarestudio, das sich der Entwicklung besserer Software und Tools widmet — keine Abonnements, keine Werbung, keine versteckten Monetarisierungstricks."
+    "studioDescription": "Ein unabhängiges Softwarestudio, das sich der Entwicklung besserer Software und Tools widmet — keine Abonnements, keine Werbung, keine versteckten Monetarisierungstricks.",
+    "sourceCode": "Quellcode",
+    "imprint": "Impressum",
+    "madeWithCare": "Mit Sorgfalt erstellt. Kein Tracking, keine Cookies.",
+    "semanticVersioning": "Dieses Projekt folgt der semantischen Versionierung (major.minor.patch)",
+    "major": "Major",
+    "minor": "Minor",
+    "patch": "Patch",
+    "majorDesc": "Brechende Änderungen",
+    "minorDesc": "Neue Funktionen (abwärtskompatibel)",
+    "patchDesc": "Fehlerbehebungen und kleine Änderungen",
+    "connect": "Verbinde dich mit uns"
   },
   "common": {
     "dataAsOf": "Daten vom"

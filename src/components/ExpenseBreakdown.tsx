@@ -17,13 +17,13 @@ interface ExpenseBreakdownProps {
 const getCategoryIcon = (categoryId: string) => {
   switch (categoryId) {
     case 'food':
-      return <Utensils className="h-5 w-5 text-amber-500" />;
+      return <Utensils className="h-5 w-5 text-indigo-500" />;
     case 'groceries':
-      return <ShoppingBag className="h-5 w-5 text-green-500" />;
+      return <ShoppingBag className="h-5 w-5 text-emerald-500" />;
     case 'utilities':
-      return <CreditCard className="h-5 w-5 text-blue-500" />;
+      return <CreditCard className="h-5 w-5 text-indigo-500" />;
     default:
-      return <Coffee className="h-5 w-5 text-orange-400" />;
+      return <Coffee className="h-5 w-5 text-amber-500" />;
   }
 };
 
@@ -59,11 +59,11 @@ export function ExpenseBreakdown({
   
   // Prepare data for pie chart - sort by value for better visualization
   const chartData: ChartDataItem[] = [
-    { name: t('neighborhoods.tableHeaders.rent'), value: affordableRent, color: '#F27127', id: 'rent' },
+    { name: t('neighborhoods.tableHeaders.rent'), value: affordableRent, color: '#6366f1', id: 'rent' },
     ...expenseCategories.map(category => ({
       name: t(`expenses.categories.${category.id}`),
       value: expenses[category.id] || (isFamilyBudget ? category.defaultAmountFamily : category.defaultAmountSingle),
-      color: category.isRequired ? '#F9CB40' : '#81C3D7',
+      color: category.isRequired ? '#f59e0b' : '#10b981',
       id: category.id
     }))
   ].sort((a, b) => b.value - a.value); // Sort by value descending
@@ -224,26 +224,26 @@ export function ExpenseBreakdown({
       .attr("dy", "1em")
       .attr("font-size", "18px")
       .attr("font-weight", "bold")
-      .attr("fill", isAffordable ? "#22c55e" : "#ef4444")
+      .attr("fill", isAffordable ? "#10b981" : "#f43f5e")
       .text(`€${totalExpenses.toFixed(0)}`);
 
   }, [chartData, chartRef, t, totalExpenses, isAffordable]);
 
   return (
-    <Card className="berlin-card w-full overflow-hidden animate-fade-in border-berlin-amber/20 bg-gradient-to-br from-neutral-100 to-white dark:from-neutral-900 dark:to-neutral-800">
-      <CardHeader className="pb-2 bg-gradient-to-r from-berlin-amber/10 to-berlin-orange/10 dark:from-berlin-amber/5 dark:to-berlin-orange/5 backdrop-blur-sm border-b border-berlin-amber/10">
-        <CardTitle className="flex items-center justify-between text-gray-900 dark:text-white">
+    <Card className="w-full overflow-hidden animate-fade-in border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <CardHeader className="pb-2 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <CardTitle className="flex items-center justify-between text-slate-900 dark:text-white">
           <div className="flex items-center gap-2">
-            <CakeSlice className="h-6 w-6 text-berlin-orange animate-pulse-subtle" />
+            <CakeSlice className="h-6 w-6 text-indigo-500 dark:text-indigo-400 animate-pulse-subtle" />
             <span>{t('expenses.breakdown')}</span>
           </div>
           {isAffordable ? (
-            <CheckCircle2 className="text-green-500 h-5 w-5" />
+            <CheckCircle2 className="text-emerald-500 h-5 w-5" />
           ) : (
-            <AlertCircle className="text-red-500 h-5 w-5" />
+            <AlertCircle className="text-rose-500 h-5 w-5" />
           )}
         </CardTitle>
-        <CardDescription className="text-gray-700 dark:text-gray-300 font-medium">
+        <CardDescription className="text-slate-700 dark:text-slate-300 font-medium">
           {isAffordable 
             ? t('expenses.sufficient', { amount: remainingBudget.toFixed(2) })
             : t('expenses.insufficient', { amount: Math.abs(remainingBudget).toFixed(2) })
@@ -255,54 +255,54 @@ export function ExpenseBreakdown({
         {/* Budget progress indicator */}
         <div className="px-6 pt-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('expenses.budgetUsage')}</span>
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t('expenses.budgetUsage')}</span>
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
               {budgetRatio.toFixed(0)}%
             </span>
           </div>
           <Progress 
             value={budgetRatio} 
-            className="h-3 bg-neutral-200 dark:bg-neutral-700" 
-            indicatorClassName={isAffordable ? "bg-gradient-to-r from-green-400 to-green-500" : "bg-gradient-to-r from-red-400 to-red-500"}
+            className="h-3 bg-slate-100 dark:bg-slate-800" 
+            indicatorClassName={isAffordable ? "bg-gradient-to-r from-emerald-400 to-emerald-500" : "bg-gradient-to-r from-rose-400 to-rose-500"}
           />
         </div>
         
         {/* Rent percentage visualization */}
         <div className="px-6 pt-6">
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-gray-200 dark:border-gray-800 p-4">
+          <div className="bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4">
             <div className="flex items-center gap-2 mb-3">
-              <Home className="h-5 w-5 text-berlin-orange" />
-              <h3 className="text-base font-medium text-gray-800 dark:text-gray-200">{t('neighborhoods.tableHeaders.rent')}</h3>
+              <Home className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+              <h3 className="text-base font-medium text-slate-800 dark:text-slate-200">{t('neighborhoods.tableHeaders.rent')}</h3>
             </div>
             
             <div className="flex items-end gap-4">
               {/* Rent amount */}
               <div>
-                <span className="text-sm text-gray-600 dark:text-gray-400">{t('expenses.amount')}</span>
-                <p className="text-xl font-bold text-gray-900 dark:text-white">€{affordableRent.toFixed(2)}</p>
+                <span className="text-sm text-slate-600 dark:text-slate-400">{t('expenses.amount')}</span>
+                <p className="text-xl font-bold text-slate-900 dark:text-white">€{affordableRent.toFixed(2)}</p>
               </div>
               
               {/* Rent percentage visualization */}
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">{t('expenses.percentOfIncome')}</span>
-                  <span className={`text-sm font-medium ${isRentPercentageHealthy ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                  <span className="text-sm text-slate-600 dark:text-slate-300">{t('expenses.percentOfIncome')}</span>
+                  <span className={`text-sm font-medium ${isRentPercentageHealthy ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
                     {rentPercentage.toFixed(1)}%
                   </span>
                 </div>
                 
-                <div className="relative h-8 bg-neutral-200 dark:bg-neutral-700 rounded-md overflow-hidden">
+                <div className="relative h-8 bg-slate-100 dark:bg-slate-800 rounded-md overflow-hidden">
                   {/* Zone colors with brighter gradients */}
                   <div className="absolute inset-0 flex">
-                    <div className="w-[30%] h-full bg-gradient-to-r from-green-300/50 to-emerald-400/40 dark:from-green-400/60 dark:to-emerald-300/50"></div>
-                    <div className="w-[20%] h-full bg-gradient-to-r from-amber-300/50 to-yellow-400/40 dark:from-amber-400/60 dark:to-yellow-300/50"></div>
-                    <div className="w-[50%] h-full bg-gradient-to-r from-rose-300/50 to-red-400/40 dark:from-rose-400/60 dark:to-red-300/50"></div>
+                    <div className="w-[30%] h-full bg-gradient-to-r from-emerald-300/50 to-emerald-400/40 dark:from-emerald-500/60 dark:to-emerald-400/50"></div>
+                    <div className="w-[20%] h-full bg-gradient-to-r from-amber-300/50 to-amber-400/40 dark:from-amber-500/60 dark:to-amber-400/50"></div>
+                    <div className="w-[50%] h-full bg-gradient-to-r from-rose-300/50 to-rose-400/40 dark:from-rose-500/60 dark:to-rose-400/50"></div>
                   </div>
                   
                   {/* Rent percentage indicator */}
                   <div 
                     className={`absolute top-0 h-full flex items-center justify-center ${
-                      isRentPercentageHealthy ? 'bg-green-500' : 'bg-amber-500'
+                      isRentPercentageHealthy ? 'bg-emerald-500' : 'bg-amber-500'
                     }`}
                     style={{ 
                       width: '4px', 
@@ -311,12 +311,12 @@ export function ExpenseBreakdown({
                     }}
                   >
                     <div className={`absolute -top-1 w-3 h-3 rounded-full ${
-                      isRentPercentageHealthy ? 'bg-green-500' : 'bg-amber-500'
+                      isRentPercentageHealthy ? 'bg-emerald-500' : 'bg-amber-500'
                     }`}></div>
                   </div>
                 </div>
                 
-                <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+                <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
                   {isRentPercentageHealthy 
                     ? t('expenses.rentHealthyTip') 
                     : t('expenses.rentHighTip')}
@@ -331,39 +331,39 @@ export function ExpenseBreakdown({
         
         {/* Expense categories */}
         <div className="px-6 pb-6 mt-4">
-          <h3 className="text-base font-medium mb-3 text-gray-800 dark:text-gray-200">{t('expenses.breakdown')}</h3>
+          <h3 className="text-base font-medium mb-3 text-slate-800 dark:text-slate-200">{t('expenses.breakdown')}</h3>
           <div className="grid grid-cols-1 gap-3">
             {chartData.map((item) => (
-              <div key={item.id} className="flex items-center justify-between p-3 rounded-lg bg-neutral-50 dark:bg-neutral-700 border border-gray-200 dark:border-gray-800 hover:border-berlin-amber/30 transition-all">
+              <div key={item.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-400/30 transition-all">
                 <div className="flex items-center gap-2">
                   {item.id === 'rent' ? (
-                    <Euro className="h-5 w-5 text-berlin-orange" />
+                    <Euro className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
                   ) : (
                     getCategoryIcon(item.id)
                   )}
-                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.name}</span>
+                  <span className="text-sm font-medium text-slate-800 dark:text-slate-200">{item.name}</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-white">€{item.value.toFixed(2)}</span>
+                <span className="font-semibold text-slate-900 dark:text-white">€{item.value.toFixed(2)}</span>
               </div>
             ))}
           </div>
         </div>
         
         {/* Income and expenses */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-gradient-to-t from-neutral-200/50 to-transparent dark:from-neutral-800/50 border-t border-gray-200 dark:border-gray-900">
-          <div className="bg-white dark:bg-neutral-800 rounded-xl p-4 border border-gray-200 dark:border-gray-900 shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-gradient-to-t from-slate-100/50 to-transparent dark:from-slate-800/50 border-t border-slate-200 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm">
             <div className="flex items-center gap-2">
-              <Euro className="h-5 w-5 text-green-500" />
-              <h3 className="text-base font-medium text-gray-900 dark:text-white">{t('expenses.income')}</h3>
+              <Euro className="h-5 w-5 text-emerald-500" />
+              <h3 className="text-base font-medium text-slate-900 dark:text-white">{t('expenses.income')}</h3>
             </div>
-            <p className="text-2xl font-bold text-green-500 mt-2">€{monthlyIncome.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-emerald-500 mt-2">€{monthlyIncome.toFixed(2)}</p>
           </div>
-          <div className="bg-white dark:bg-neutral-800 rounded-xl p-4 border border-gray-200 dark:border-gray-900 shadow-sm">
+          <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm">
             <div className="flex items-center gap-2">
-              <ShoppingBag className="h-5 w-5 text-berlin-orange" />
-              <h3 className="text-base font-medium text-gray-900 dark:text-white">{t('expenses.totalExpenses')}</h3>
+              <ShoppingBag className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+              <h3 className="text-base font-medium text-slate-900 dark:text-white">{t('expenses.totalExpenses')}</h3>
             </div>
-            <p className={`text-2xl font-bold mt-2 ${isAffordable ? 'text-green-500' : 'text-red-500'}`}>
+            <p className={`text-2xl font-bold mt-2 ${isAffordable ? 'text-emerald-500' : 'text-rose-500'}`}>
               €{totalExpenses.toFixed(2)}
             </p>
           </div>
@@ -371,13 +371,13 @@ export function ExpenseBreakdown({
         
         {/* Remaining budget section */}
         {isAffordable && (
-          <div className="p-6 bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 border-t border-green-100 dark:border-green-900/30">
+          <div className="p-6 bg-gradient-to-r from-emerald-50 to-transparent dark:from-emerald-900/20 border-t border-emerald-100 dark:border-emerald-900/30">
             <div className="flex items-center gap-2">
-              <Leaf className="h-5 w-5 text-green-500" />
-              <h3 className="text-base font-medium text-green-700 dark:text-green-300">{t('expenses.remainingBudget')}</h3>
+              <Leaf className="h-5 w-5 text-emerald-500" />
+              <h3 className="text-base font-medium text-emerald-700 dark:text-emerald-300">{t('expenses.remainingBudget')}</h3>
             </div>
-            <p className="text-2xl font-bold text-green-600 dark:text-green-400 mt-2">€{remainingBudget.toFixed(2)}</p>
-            <p className="text-sm text-green-600/70 dark:text-green-400/70 mt-2">
+            <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-2">€{remainingBudget.toFixed(2)}</p>
+            <p className="text-sm text-emerald-600/70 dark:text-emerald-400/70 mt-2">
               {t('expenses.doingGreat', { percent: ((remainingBudget / monthlyIncome) * 100).toFixed(0) })}
             </p>
           </div>
